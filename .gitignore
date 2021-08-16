@@ -27,6 +27,7 @@
 # Diversos
 
 /tmp/*
+/Temp/*
 
 *.tmp
 *.bkp
