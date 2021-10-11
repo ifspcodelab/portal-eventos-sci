@@ -1,5 +1,6 @@
 <?php
 include 'conect.php';
+// carregar do evento
     $newc=$_POST['newc'];
                     $sql="SELECT eventos.cod_evento, nome_evento, descricao_evento, img_evento, periodo_evento, data_inicio from eventos inner join eventos_atividades on eventos.cod_evento=eventos_atividades.cod_evento group by eventos.cod_evento order by eventos_atividades.data_inicio desc limit  $newc";
 					$result=$conn->query($sql);

@@ -1,6 +1,7 @@
 <?php
 include 'head.php';
 ?>
+<!-- show.php -->
 <!DOCTYPE HTML>
 <html>
     <head>

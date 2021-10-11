@@ -1,5 +1,7 @@
 <?php
 include 'conect.php';
+// carregar da noticia
+
     $newc=$_POST['newc'];
                     $sql="select * from eventos_atividades_noticias order by data_noticia desc limit $newc";
 					$result=$conn->query($sql);

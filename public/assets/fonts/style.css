@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?oztblu');
+  src:  url('fonts/icomoon.eot?oztblu#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?oztblu') format('truetype'),
+    url('fonts/icomoon.woff?oztblu') format('woff'),
+    url('fonts/icomoon.svg?oztblu#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Add-New:before {
+  content: "\e900";
+}
+.icon-Back:before {
+  content: "\e901";
+}
+.icon-Calendar:before {
+  content: "\e902";
+}
+.icon-Cancel:before {
+  content: "\e903";
+}
+.icon-Checkmark-Yes:before {
+  content: "\e904";
+}
+.icon-Clock:before {
+  content: "\e905";
+}
+.icon-Event-Accepted:before {
+  content: "\e906";
+}
+.icon-Expand-Arrow:before {
+  content: "\e907";
+}
+.icon-Forward:before {
+  content: "\e908";
+}
+.icon-Menu:before {
+  content: "\e909";
+}
+.icon-Multiply:before {
+  content: "\e90a";
+}
+.icon-New-Document:before {
+  content: "\e90b";
+}
+.icon-Note:before {
+  content: "\e90c";
+}
+.icon-Phone:before {
+  content: "\e90d";
+}
+.icon-Place-Marker:before {
+  content: "\e90e";
+}
+.icon-Plus-Math:before {
+  content: "\e90f";
+}
+.icon-Search:before {
+  content: "\e910";
+}
+.icon-Secured-Letter:before {
+  content: "\e911";
+}
+.icon-Tick-Box:before {
+  content: "\e912";
+}
+.icon-Train-Ticket:before {
+  content: "\e913";
+}

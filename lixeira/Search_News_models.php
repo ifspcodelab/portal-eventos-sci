@@ -1,6 +1,7 @@
 <?php
 include 'head.php';
 ?>
+<!-- pesquisa das noticias -->
 <header>
             <a href="testpage1.php">
                 <img src="imagens/LogoIF.png" alt="logo">
