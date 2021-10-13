@@ -1,0 +1,22 @@
+:root{
+    /* colors */
+    --red: hsl(358, 78%, 45%);
+    --red-medium: hsl(6, 70%, 56%);
+    --red-light: hsl(8, 76%, 65%);
+
+    --green: hsl(130, 54%, 40%);
+    --green-medium: hsl(124, 34%, 52%);
+    --green-light: hsl(121, 34%, 62%);
+
+    --black: hsl(0, 0%, 0%);
+    --gray:  hsl(0, 0%, 46%);
+    --gray-background: hsl(0, 0%, 98%);
+    --box-stroke:  hsl(0, 0%, 92%);
+    --white: hsl(0, 0%, 100%);
+
+    /* fonts */
+
+    --title-font-size: 700 2.25rem;
+    --subtitle-font-size: 600 1.5rem;
+    --body-font-size: 400 1rem;
+}
