@@ -16,7 +16,7 @@ class Events
   public static function findAll()
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT cod_evento, nome_evento, periodo_evento, descricao_evento FROM evento');
+    $result = $conn->executeQuery('SELECT cod_evento, nome_evento, periodo_evento, descricao_evento, img_evento, sigla_evento FROM evento');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 

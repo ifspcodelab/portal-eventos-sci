@@ -153,7 +153,7 @@ h6, .h6 {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 abbr[title],
@@ -2994,7 +2994,7 @@ textarea.form-control-lg {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   border-radius: 0.5rem;
-  box-shadow: 4px 0 4px #DDDDDD;
+  box-shadow: 2px 2px 6px #DDDDDD;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -11278,6 +11278,38 @@ textarea.form-control-lg {
 
 /*# sourceMappingURL=bootstrap.css.map */
 
+/* events list */
+.events .card{
+  color: #4b4b4b;
+  padding: 1.875rem;
+  border-radius: 0.625rem;
+  max-width: 48rem;
+}
+
+.events .card div div.col-md-5{
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  height: fit-content;
+}
+
+i{
+  font-size: 2rem;
+}
+
+.card-details div{
+  display: flex;
+  align-items: center;
+}
+
+.card-details{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+/* buttons */
 .btn-green {
   color: var(--bs-white);
   background-color: var(--bs-green);
@@ -11288,6 +11320,17 @@ textarea.form-control-lg {
   background-color: var(--bs-green-medium);
 }
 
+.btn-red {
+  color: var(--bs-white);
+  background-color: var(--bs-red-medium);
+}
+
+.btn-red:hover {
+  color: #fff;
+  background-color: var(--bs-red-light);
+}
+
+/* footer */
 footer, header{
   background-color: var(--bs-white);
 }
@@ -11328,4 +11371,84 @@ footer{
   background-color: var(--bs-green);
 }
 
-/* @media() */
+@media(max-width: 992px){
+  /* footer */
+  .footer-order-1{
+    order: 1;
+    grid-row: auto/span 2;
+  }
+
+  .footer-order-2{
+    order: 3; 
+    grid-row: auto/span 3;
+  }
+
+  .footer-order-3{
+    order: 2;
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+  }
+
+  .footer-align{
+    display: grid;
+    grid-template-rows: repeat(3, 80px);
+    grid-auto-flow: column;
+  }
+
+  .footer-align div:first-child, .footer-align div:last-child{
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .footer-scale img{
+    display: block;
+  }
+  
+  .footer-scale img:last-child{
+    width: 12rem;
+  }
+}
+
+@media(max-width: 768px){
+  /* footer */
+  .footer-order-3{
+    margin: 1rem 0;
+  }
+
+  .footer-align{
+    justify-content: center;
+    grid-template-rows: auto;
+    grid-auto-flow: initial;
+  }
+
+  .footer-scale img{
+    display: inline;
+  }
+
+  .footer-scale img:first-child{
+    width: 6.25rem;
+  }
+  
+  .footer-scale img:last-child{
+    width: 9.375rem;
+  }
+
+  footer .row div.footer-info div{
+    display: block;
+  }
+
+  .footer-info span{
+    margin-right: 0;
+    display: block
+  }
+
+  footer a, footer span{
+    font-size: 0.875rem;
+  }
+
+  footer div:last-child{
+    display: grid;
+    justify-content: center;
+  }
+}

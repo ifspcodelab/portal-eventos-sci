@@ -13,6 +13,9 @@
     <!-- <link href="./assets/css//bootstrap.min.css" rel="stylesheet"> -->
     <link href="./assets/css//bootstrap.css" rel="stylesheet">
 
+    <!-- Fonts -->
+    <link href="./assets/fonts/style.css" rel="stylesheet">
+
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -25,28 +28,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-    
-    <!-- Custom styles for this template -->
-    <link href="sticky-footer-navbar.css" rel="stylesheet">
   </head>
-  <body class="d-flex flex-column h-100">
+
+<body class="d-flex flex-column h-100">
     
 <header>
 
@@ -54,15 +38,17 @@
   <nav class="navbar navbar-expand-md navbar-light">
     <div class="container">
 
-      <a class="navbar-brand" href="#"> <img src="./assets/img/logo.png" alt="Logo Portal de Eventos SCI Imagem"></a>
+      <a class="navbar-brand" href="#"> 
+        <img src="./assets/img/logo.png" alt="Logo Portal de Eventos SCI Imagem">
+      </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" >
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse flex-row-reverse justify-content-between" id="navbarToggleExternalContent">
+      <div class="collapse navbar-collapse flex-row-reverse justify-content-between" id="navbarCollapse">
 
-        <ul class="navbar-nav mb-md-0 ">
+        <ul class="navbar-nav mb-md-0 mx-3">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Eventos</a>
           </li>
@@ -70,16 +56,17 @@
             <a class="nav-link" href="#">Notícias</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Sobre o Portal</a>
+            <a class="nav-link" href="#">Sobre o Portal</a>
           </li>
+          
         </ul>
 
-        <form action="/event/searchbytext" method="POST" class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Procure por um evento ou notícia" aria-label="Search" name="inputSearch">
-            <button class="btn btn-green" type="submit">Buscar</button>
-          </form>
-
-      </div>
+       <form action="/event/searchbytext" method="POST" class="d-flex flex-fill">
+       
+          <input class="form-control mx-1" type="search" placeholder="Procure por um evento ou notícia" aria-label="Search" name="inputSearch">
+      
+          <button class="btn btn-green" type="submit"> Buscar</button>   
+        </form>
 
     </div>
 
@@ -113,11 +100,11 @@
 <footer class="footer mt-auto py-3">
   <div class="container">
     <div class="row footer-align">
-      <div class="col-sm footer-scale">
+      <div class="col-sm footer-scale footer-order-1">
         <img src="./assets/img/logo.png" alt="Logo Portal de Eventos SCI Imagem">
         <img src="./assets/img/logoIFSP.png" alt="Logo Instituto Federal de São Paulo Imagem">
       </div>
-      <div class="col-sm">
+      <div class="col-sm footer-order-2">
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" href="#">Início</a>
@@ -136,7 +123,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-sm">
+      <div class="col-sm footer-order-3">
         <a class="btn btn-green float-end" href="#">Entre em contato</a>
       </div>
     </div>
@@ -161,7 +148,7 @@
 </footer>
 
 
-    <script src="assets/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+  <script src="./assets/js/bootstrap.js"></script>
 
       
   </body>
