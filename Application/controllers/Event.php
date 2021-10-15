@@ -25,9 +25,9 @@ class Event extends Controller
   public function show($id = null)
   {
     if (is_numeric($id)) {
-        $Events = $this->model('Events');
+      $Events = $this->model('Events');
       $data = $Events::findById($id);
-      $this->view('event/show', ['events' => $data]);
+      $this->view('event/show', ['events' => $data, 'banner' => false]);
     } else {
       $this->pageNotFound();
     }
@@ -39,10 +39,10 @@ class Event extends Controller
   {
     if (isset($_POST["inputSearch"]))
     {
-        $searchText = $_POST["inputSearch"];
-        $Events = $this->model('Events');
-        $data = $Events::findByText($searchText);
-        $this->view('event/show', ['events' => $data]);
+      $searchText = $_POST["inputSearch"];
+      $Events = $this->model('Events');
+      $data = $Events::findByText($searchText);
+      $this->view('event/index', ['events' => $data, 'banner' => true, 'banner_template' => 'commons/banner']);
     }
     else
     {

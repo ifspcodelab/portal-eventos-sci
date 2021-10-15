@@ -35,7 +35,7 @@ class Controller
     if($data['banner'] == true)
     {
       require '../Application/views/' . $data['banner_template'] . '.php';
-    } 
+    }
 
     require '../Application/views/' . $view . '.php';
   }
@@ -46,6 +46,6 @@ class Controller
   */
   public function pageNotFound()
   {
-    $this->view('erro404');
+    $this->view('erro404', ['banner' => false]);
   }
 }

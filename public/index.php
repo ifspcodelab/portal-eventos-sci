@@ -9,14 +9,14 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sticky-footer-navbar/">
     <!-- Bootstrap core CSS -->
-    <!-- <link href="./assets/css//bootstrap.min.css" rel="stylesheet"> -->
-    <link href="./assets/css//bootstrap.css" rel="stylesheet">
+     <!-- <link href="./assets/css//bootstrap.min.css" rel="stylesheet"> -->
+    <link href="/../../assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Fonts -->
-    <link href="./assets/fonts/style.css" rel="stylesheet">
+    <link href="/../../assets/fonts/style.css" rel="stylesheet">
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/../../assets/img/favicon.ico" type="image/x-icon">
     <meta name="theme-color" content="#7952b3">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,13 +26,13 @@
 
 <body class="d-flex flex-column h-100">
     
-  <header>
+  <header id="header">
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-light shadow">
       <div class="container">
 
-        <a class="navbar-brand" href="./events"> 
-          <img src="./assets/img/logo.png" alt="Logo Portal de Eventos SCI Imagem">
+        <a class="navbar-brand" href="../../"> 
+          <img src="../../assets/img/logo.png" alt="Logo Portal de Eventos SCI Imagem">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" >
@@ -43,13 +43,13 @@
 
           <ul class="navbar-nav mb-md-0 mx-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./events">Eventos</a>
+              <a class="nav-link active" aria-current="page" href="../event">Eventos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./news">Notícias</a>
+              <a class="nav-link" href="../../news">Notícias</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Sobre o Portal</a>
+              <a class="nav-link" href="../../about">Sobre o Portal</a>
             </li>
           </ul>
 
@@ -69,6 +69,7 @@
 <!-- Begin page content -->
 
   <?php
+    // ini_set('error_reporting', "E_STRICT");
     require '../Application/autoload.php';
 
     use Application\core\App;
@@ -82,22 +83,22 @@
     <div class="container">
       <div class="row footer-align">
         <div class="col-sm footer-scale footer-order-1">
-          <img src="./assets/img/logo.png" alt="Logo Portal de Eventos SCI Imagem">
-          <img src="./assets/img/logoIFSP.png" alt="Logo Instituto Federal de São Paulo Imagem">
+          <img src="../../assets/img/logo.png" alt="Logo Portal de Eventos SCI Imagem">
+          <img src="../../assets/img/logoIFSP.png" alt="Logo Instituto Federal de São Paulo Imagem">
         </div>
         <div class="col-sm footer-order-2">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Início</a>
+              <a class="nav-link active" href="#header">Início</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Eventos</a>
+              <a class="nav-link" href="../../event">Eventos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Notícias </a>
+              <a class="nav-link" href="../../news">Notícias </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Sobre o Portal de Eventos</a>
+              <a class="nav-link" href="../../about">Sobre o Portal de Eventos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Termos de Uso</a>
@@ -129,8 +130,6 @@
   </footer>
 
 
-  <script src="./assets/js/bootstrap.js"></script>
-
-      
+  <script src="../../assets/js/bootstrap.js"></script>    
   </body>
 </html>

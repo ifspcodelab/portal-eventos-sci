@@ -1,3 +1,4 @@
+<main class="flex-shrink-0">
 <div class="container">
   <div class="row">
     <div class="col-12 text-center" style="margin-top:200px">
@@ -5,3 +6,4 @@
     </div>
   </div>
 </div>
+</main>
