@@ -12,7 +12,7 @@ class News extends Controller
   {
     $Events = $this->model('News'); // é retornado o model Users()
     $data = $Events::findAll();
-    $this->view('news/index', ['news' => $data]);
+    $this->view('news/index', ['news' => $data, 'banner' => true, 'banner_template' => 'commons/banner']);
   }
 
   /**

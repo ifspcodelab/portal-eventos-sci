@@ -32,8 +32,12 @@ class Controller
   */
   public function view(string $view, $data = [])
   {
-    require '../Application/views/' . $view . '.php';
+    if($data['banner'] == true)
+    {
+      require '../Application/views/' . $data['banner_template'] . '.php';
+    } 
 
+    require '../Application/views/' . $view . '.php';
   }
 
   /**

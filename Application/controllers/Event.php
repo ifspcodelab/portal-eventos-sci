@@ -12,7 +12,7 @@ class Event extends Controller
   {
     $Events = $this->model('Events'); // é retornado o model Users()
     $data = $Events::findAll();
-    $this->view('event/index', ['events' => $data]);
+    $this->view('event/index', ['events' => $data, 'banner' => true, 'banner_template' => 'commons/banner']);
   }
 
   /**

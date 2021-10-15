@@ -9,7 +9,7 @@ class Database extends PDO
   
   private $DB_NAME = 'portaleventosdb';
   private $DB_USER = 'portaleventosuser';
-  private $DB_PASSWORD = 'portaleventospassword';
+  private $DB_PASSWORD = 'portaleventosuser';
   private $DB_HOST = 'localhost';
   private $DB_PORT = 3306;
   
