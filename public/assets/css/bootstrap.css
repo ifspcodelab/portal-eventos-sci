@@ -7811,6 +7811,11 @@ textarea.form-control-lg {
   background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
 }
 
+.bg-green {
+  --bs-bg-opacity: 1;
+  background-color: var(--bs-green) !important;
+}
+
 .bg-info {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-info-rgb), var(--bs-bg-opacity)) !important;
@@ -11451,4 +11456,22 @@ footer{
     display: grid;
     justify-content: center;
   }
+}
+
+/* Input Search Icon */
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
 }
