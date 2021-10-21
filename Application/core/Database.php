@@ -65,4 +65,13 @@ class Database extends PDO
     return $stmt;
   }
 
+   public function executeQueryLimitOffset(string $query, int $limit, int $offset)
+  {
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindValue(':L', $limit, PDO::PARAM_INT);
+    $stmt->bindValue(':O', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt;
+  }
+
 }

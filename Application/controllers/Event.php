@@ -8,11 +8,25 @@ class Event extends Controller
   * chama a view index.php da seguinte forma /user/index   ou somente   /user
   * e retorna para a view todos os usuários no banco de dados.
   */
-  public function index()
+  public function index($page = 1)
   {
-    $Events = $this->model('Events'); // é retornado o model Users()
-    $data = $Events::findAll();
-    $this->view('event/index', ['events' => $data, 'banner' => true, 'banner_template' => 'commons/banner']);
+    $Events = $this->model('Events'); // é retornado o model Events()
+    
+    $qtdEvents = 0; 
+    $eventsPerPage = 2;
+    $offset = ($page > 1) ? ($eventsPerPage * ($page - 1)) : 0;
+
+    $count_data = $Events::countEvents();
+
+    foreach ($count_data as $count){
+      $qtdEvents = (int) $count['total'];
+    }
+
+    $maxPages = ceil($qtdEvents / $eventsPerPage);
+
+    $data = $Events::find((int)$eventsPerPage, (int) $offset);
+
+    $this->view('event/index', ['events' => $data, 'banner' => true, 'banner_template' => 'commons/banner', 'current_page' => $page, 'max_pages' => $maxPages]);
   }
 
   /**
@@ -27,7 +41,7 @@ class Event extends Controller
     if (is_numeric($id)) {
       $Events = $this->model('Events');
       $data = $Events::findById($id);
-      $this->view('event/show', ['events' => $data, 'banner' => false]);
+      $this->view('event/show', ['events' => $data]);
     } else {
       $this->pageNotFound();
     }

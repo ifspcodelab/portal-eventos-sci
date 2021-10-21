@@ -32,7 +32,7 @@ class Controller
   */
   public function view(string $view, $data = [])
   {
-    if($data['banner'] == true)
+    if(isset($data['banner']) && $data['banner'] == true)
     {
       require '../Application/views/' . $data['banner_template'] . '.php';
     }

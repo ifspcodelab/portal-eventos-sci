@@ -1,7 +1,21 @@
+<?php
+  $currentPage = 1;
+  $maxPages = 0;
+
+  if(isset($data["current_page"]) && $data["current_page"] > 0){
+    $currentPage = $data["current_page"];
+  }
+
+  if(isset($data["max_pages"]) && $data["max_pages"] > 0){
+    $maxPages = $data["max_pages"];
+  }
+?>
+
+
 <!-- Adicionar novo evento -->
 <!-- Acesso restrito ao Admnistrador -->
 <div class="container mb-4 d-flex justify-content-end">
-  <a href="#" role="button" class="btn btn-outline-light d-flex align-items-center shadow-sm border-secondary">
+  <a href="../../event/create" role="button" class="btn btn-outline-light d-flex align-items-center shadow-sm border-secondary">
     <span class="text-dark">Novo Evento</span> 
     <i class="icon-Add-New text-success"></i>
   </a>
@@ -15,7 +29,7 @@
 
   </aside>
   <section class="event-list mb-5 ">
-  <?php foreach ($data['events'] as $event) { ?>
+  <?php foreach ($data['events'] as $event): ?>
     <div class="events">
       <div class="card mb-3">
         <div class="row g-0">
@@ -40,11 +54,37 @@
         </div>
       </div>
     </div>
-  <?php }?>
+  <?php endforeach; ?>
 
-  <div class="col-5 mx-auto mb-5 d-flex justify-content-center">
-        <button class="btn btn-green" type="button" id="load">Mostrar mais</button>
-    </div>
+  <!-- Pagination Button -->
+  <nav>
+    <ul class="pagination justify-content-center">
+      <?php if($currentPage> 1): ?>
+      <li class="page-item">
+        <a class="page-link" href="../../event/index/<?=($currentPage - 1)?>" aria-label="Previous" id="prev">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <?php endif; ?>
+
+      <?php for($i = 1; $i <= $maxPages; $i++): ?>
+      <li class="page-item">
+        <a class="page-link" href="../../event/index/<?=$i?>"> 
+          <?=$i?>
+        </a>
+      </li>
+      <?php endfor; ?>
+
+      <?php if($currentPage < $maxPages): ?>
+      <li class="page-item">
+        <a class="page-link" href="../../event/index/<?=($currentPage + 1)?> " aria-label="Next" id="next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+      <?php endif; ?>
+
+    </ul>
+  </nav>
   </section>
 </div>
 </main>
