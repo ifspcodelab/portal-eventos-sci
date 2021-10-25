@@ -15,7 +15,7 @@ class Events
   public static function findAll()
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT cod_evento, nome_evento, sigla_evento, periodo_evento, img_evento, descricao_evento FROM evento');
+    $result = $conn->executeQuery('SELECT nome_evento, sigla_evento, periodo_evento, cod_evento, img_evento, descricao_evento, link_evento, link_inscricao_evento, data_modificacao, usuario FROM evento');
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 
@@ -29,25 +29,9 @@ class Events
   public static function findById(int $id)
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT ev.cod_evento, ev.nome_evento, ev.sigla_evento, ev.descricao_evento, ev.img_evento, ev.periodo_evento, ev.link_evento, ev.link_inscricao_evento, atv.cod_atividade, atv.nome_atividade, atv.preco_inscricao, atv.data_inicio, atv.data_fim, atv.descricao_atividade, atv.observacao_atividade, atv.hora_inicio, atv.hora_fim, atv.link_atividade, atv.link_inscricao_atividade, ps.nome_contato as nome_pessoa_ifsp, ps.nome_contato as nome_pessoa_externa, pex.area_contato_empresa, emp.nome_empresa, eif.papel_envolvido_ifsp, apif.nome_departamento
-    FROM evento ev 
-    LEFT JOIN atividade atv 
-    ON ev.cod_evento = atv.fk_evento_cod_evento 
-    LEFT JOIN responsavel_atividade resp
-    ON resp.fk_atividade_cod_atividade = atv.cod_atividade
-    LEFT JOIN pessoa ps
-    ON resp.fk_pessoa_cod_pessoa = ps.cod_pessoa
-    LEFT JOIN pessoa_externa pex
-    ON pex.fk_pessoa_cod_pessoa = ps.cod_pessoa
-    LEFT JOIN empresa emp
-    ON pex.fk_empresa_cod_empresa = emp.cod_empresa
-    LEFT JOIN pessoa_ifsp pif
-    ON pif.fk_pessoa_cod_pessoa = ps.cod_pessoa
-    LEFT JOIN envolvido_ifsp eif
-    ON eif.fk_pessoa_IFSP_cod_pessoa_ifsp = pif.cod_pessoa_ifsp
-    LEFT JOIN area_pessoa_ifsp apif
-    ON pif.fk_area_pessoa_IFSP_cod_area_pessoa_ifsp = apif.cod_area_pessoa_ifsp
-    WHERE ev.cod_evento = :ID', array(
+    $result = $conn->executeQuery('SELECT nome_evento, sigla_evento, periodo_evento, cod_evento, img_evento, descricao_evento, link_evento, link_inscricao_evento, data_modificacao, usuario
+    FROM evento
+    WHERE cod_evento = :ID', array(
       ':ID' => $id
     ));
 
@@ -57,7 +41,7 @@ class Events
   public static function findByText(String $text)
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT cod_evento, nome_evento, sigla_evento, periodo_evento, img_evento, descricao_evento FROM evento WHERE nome_evento LIKE :T', array(
+    $result = $conn->executeQuery('SELECT nome_evento, sigla_evento, periodo_evento, cod_evento, img_evento, descricao_evento, link_evento, link_inscricao_evento, data_modificacao, usuario FROM evento WHERE nome_evento LIKE :T', array(
       ':T' => '%'.$text.'%'
     ));
 
@@ -69,7 +53,7 @@ class Events
   {
     $conn = new Database();
 
-    $result = $conn->executeQueryLimitOffset('SELECT cod_evento, nome_evento, sigla_evento, periodo_evento, img_evento, descricao_evento FROM evento LIMIT :L OFFSET :O',
+    $result = $conn->executeQueryLimitOffset('SELECT nome_evento, sigla_evento, periodo_evento, cod_evento, img_evento, descricao_evento, link_evento, link_inscricao_evento, data_modificacao, usuario FROM evento LIMIT :L OFFSET :O',
       $eventsPerPage,
       $offset
     );

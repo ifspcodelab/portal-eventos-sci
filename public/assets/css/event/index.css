@@ -1,0 +1,29 @@
+/* events list */
+.events .card{
+    color: #4b4b4b;
+    padding: 1.875rem;
+    border-radius: 0.625rem;
+    max-width: 48rem;
+  }
+  
+  .events .card div div.col-md-5{
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+  }
+  
+  i{
+    font-size: 2rem;
+  }
+  
+  .card-details div{
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }

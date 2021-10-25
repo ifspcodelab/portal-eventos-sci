@@ -9,16 +9,15 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sticky-footer-navbar/">
     <!-- Bootstrap core CSS -->
-    <link href="/../../assets/css/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
 
     <!-- DataTables -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"> -->
     
-
-
     <!-- Fonts -->
-    <link href="/../../assets/fonts/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"  href="/../../assets/fonts/style.css">
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="/../../assets/img/favicon.ico" type="image/x-icon">
@@ -28,6 +27,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/commom.css">
   </head>
 
 <body class="d-flex flex-column h-100">
@@ -136,15 +137,17 @@
   </footer>
 
   <!-- Bootstrap script -->
-  <script src="../../assets/js/bootstrap.js"></script>
+  <script type="text/javascript" language="javascript"  src="/assets/js/bootstrap.js"></script>
 
   <!-- Font Awesome Script -->
-  <script src="https://kit.fontawesome.com/6726683f80.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" language="javascript"  src="https://kit.fontawesome.com/6726683f80.js" crossorigin="anonymous"></script>
 
   <!-- DataTables script -->
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-  <script src="../../assets/js/datatable.script.js"></script>
+  <script src="../../assets/js/datatable.script.js"></script>-->
+
+  <script type="text/javascript" language="javascript" src="/assets/js/commom.js"></script>
 </body>
 </html>

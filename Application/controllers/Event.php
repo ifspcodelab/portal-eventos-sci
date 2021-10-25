@@ -38,11 +38,18 @@ class Event extends Controller
   */
   public function show($id = null)
   {
-    if (is_numeric($id)) {
+    if (is_numeric($id))
+    {
       $Events = $this->model('Events');
-      $data = $Events::findById($id);
-      $this->view('event/show', ['events' => $data]);
-    } else {
+      $dataEvents = $Events::findById($id);
+
+      $Activities = $this->model('Activities');
+      $dataActivities = $Activities::findByEventId($id);
+
+      $this->view('event/show', ['events' => $dataEvents, 'activities' => $dataActivities]);
+    }
+    else
+    {
       $this->pageNotFound();
     }
   }

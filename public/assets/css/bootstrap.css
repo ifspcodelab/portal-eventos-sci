@@ -11764,8 +11764,3 @@ textarea{
 #amount{
   display: none;
 }
-
-/* temporario */
-.dataTables_length, .dataTables_filter, .dataTables_paginate{
-  display: none;
-}

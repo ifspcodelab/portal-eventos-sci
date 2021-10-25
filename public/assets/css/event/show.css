@@ -1,0 +1,18 @@
+
+
+/* temporario */
+/*
+.dataTables_length, .dataTables_filter, .dataTables_paginate{
+    display: none;
+}
+*/
+
+
+
+table#activities.dataTable tbody tr {
+    background-color: var(--bs-red) !important;
+} 
+
+table#activities.dataTable tbody td {
+    background-color: var(--bs-red) !important;
+} 

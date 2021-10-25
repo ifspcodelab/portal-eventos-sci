@@ -1,3 +1,5 @@
+<link href="/assets/css/event/index.css" rel="stylesheet" type="text/css" >
+
 <?php
   $currentPage = 1;
   $maxPages = 0;

@@ -1,0 +1,44 @@
+/* header */
+
+x
+
+/* footer */
+footer, header{
+    background-color: var(--bs-white);
+  }
+  
+  footer{
+    font-weight: 500;
+  }
+  
+  .footer-align div:first-child{
+    margin-right: 2rem;
+  }
+  
+  .footer-align div:last-child{
+    margin-left: 2rem;
+  }
+  
+  .footer-scale img:first-child{
+    width: 8.5rem;
+  }
+  
+  .footer-scale img:last-child{
+    width: 22rem;
+  }
+  
+  .footer-info, .footer-info a{
+    color: var(--bs-gray);
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .footer-info span{
+    margin-right: 2rem
+  }
+  
+  .footer-bar{
+    height: 1.25rem;
+    margin-top: 1rem;
+    background-color: var(--bs-green);
+  }
