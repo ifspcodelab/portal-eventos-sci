@@ -29,10 +29,24 @@ class Events
   public static function findById(int $id)
   {
     $conn = new Database();
-    $result = $conn->executeQuery('SELECT ev.cod_evento, ev.nome_evento, ev.sigla_evento, ev.descricao_evento, ev.img_evento, ev.periodo_evento, atv.cod_atividade, atv.nome_atividade, atv.preco_inscricao, atv.data_inicio, atv.data_fim, atv.descricao_atividade, atv.observacao_atividade, atv.hora_inicio, atv.hora_fim, atv.link_atividade, atv.link_inscricao_atividade
+    $result = $conn->executeQuery('SELECT ev.cod_evento, ev.nome_evento, ev.sigla_evento, ev.descricao_evento, ev.img_evento, ev.periodo_evento, ev.link_evento, ev.link_inscricao_evento, atv.cod_atividade, atv.nome_atividade, atv.preco_inscricao, atv.data_inicio, atv.data_fim, atv.descricao_atividade, atv.observacao_atividade, atv.hora_inicio, atv.hora_fim, atv.link_atividade, atv.link_inscricao_atividade, ps.nome_contato as nome_pessoa_ifsp, ps.nome_contato as nome_pessoa_externa, pex.area_contato_empresa, emp.nome_empresa, eif.papel_envolvido_ifsp, apif.nome_departamento
     FROM evento ev 
-    INNER JOIN atividade atv 
+    LEFT JOIN atividade atv 
     ON ev.cod_evento = atv.fk_evento_cod_evento 
+    LEFT JOIN responsavel_atividade resp
+    ON resp.fk_atividade_cod_atividade = atv.cod_atividade
+    LEFT JOIN pessoa ps
+    ON resp.fk_pessoa_cod_pessoa = ps.cod_pessoa
+    LEFT JOIN pessoa_externa pex
+    ON pex.fk_pessoa_cod_pessoa = ps.cod_pessoa
+    LEFT JOIN empresa emp
+    ON pex.fk_empresa_cod_empresa = emp.cod_empresa
+    LEFT JOIN pessoa_ifsp pif
+    ON pif.fk_pessoa_cod_pessoa = ps.cod_pessoa
+    LEFT JOIN envolvido_ifsp eif
+    ON eif.fk_pessoa_IFSP_cod_pessoa_ifsp = pif.cod_pessoa_ifsp
+    LEFT JOIN area_pessoa_ifsp apif
+    ON pif.fk_area_pessoa_IFSP_cod_area_pessoa_ifsp = apif.cod_area_pessoa_ifsp
     WHERE ev.cod_evento = :ID', array(
       ':ID' => $id
     ));
@@ -71,7 +85,45 @@ class Events
   }
 
   // create
+  public static function newEvent()
+  {
+      $conn = new Database();
+      $result = $conn->executeQuery('SELECT count(cod_evento) as total FROM evento');
+      return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
 
+  public static function createEvent(array $dataEvent, array $dataActivities)
+  {
+    $conn = new Database();
+    $insertEvent = $conn->executeQuery('INSERT INTO evento (nome_evento, sigla_evento, periodo_evento, descricao_evento, img_evento) VALUES (:nome, :sigla, :periodo, :descricao, :banner)', array(
+      ':nome' => $dataEvent['nome_evento'],
+      ':sigla' => $dataEvent['sigla_evento'],
+      ':periodo' => $dataEvent['periodo_evento'],
+      ':descricao' => $dataEvent['descricao_evento'],
+      ':banner' => $dataEvent['img_evento']
+    ));
+
+    $eventId = $conn->executeQuery('SELECT cod_evento FROM `evento` ORDER BY cod_evento DESC LIMIT 1');
+
+    foreach($eventId as $event){
+
+    $insertActivities = $conn->executeQuery('INSERT INTO atividade (nome_atividade, data_inicio, data_fim, descricao_atividade, observacao_atividade, preco_inscricao, pontuacao_atividade, link_atividade, link_inscricao_atividade, fk_evento_cod_evento) VALUES (:nome, :dataInicio, :dataFim, :descricao, :obsevacao, :preco, :pontuacao, :linkAtividade, :linkInscricao, :evento)', array(
+      ':nome' => $dataActivities['nome_atividade'],
+      ':dataInicio' => $dataActivities['data_inicio'],
+      ':dataFim' => $dataActivities['data_fim'],
+      ':descricao' => $dataActivities['descricao_atividade'],
+      ':obsevacao' => $dataActivities['observacao_atividade'],
+      ':preco' => $dataActivities['preco_inscricao'],
+      ':pontuacao' => $dataActivities['pontuacao_atividade'],
+      ':linkAtividade' => $dataActivities['link_atividade'],
+      ':linkInscricao' => $dataActivities['link_inscricao_atividade'],
+      ':evento' => (int) $event['cod_evento']
+    ));
+  }
+    return $insertEvent->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  
 
   // update
 

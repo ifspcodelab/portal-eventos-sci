@@ -15,7 +15,7 @@
 <!-- Adicionar novo evento -->
 <!-- Acesso restrito ao Admnistrador -->
 <div class="container mb-4 d-flex justify-content-end">
-  <a href="../../event/create" role="button" class="btn btn-outline-light d-flex align-items-center shadow-sm border-secondary">
+  <a href="../../event/create" role="button" class="btn btn-outline-light d-flex align-items-center shadow-sm bg-white">
     <span class="text-dark">Novo Evento</span> 
     <i class="icon-Add-New text-success"></i>
   </a>
@@ -34,8 +34,8 @@
       <div class="card mb-3">
         <div class="row g-0">
           <div class="col-md-5">
-            <figure class="figure mb-0 w-100 d-flex align-items-center">
-            <img src="data:image/;base64,<?= base64_encode($event['img_evento']) ?>"  alt="Banner Evento <?= $event['nome_evento'] ?>" class="figure-img img-fluid rounded-3 ">
+            <figure class="figure mb-0 w-100 d-flex align-items-center justify-content-center">
+            <img src="<?= $event['img_evento'] ?>"  alt="Banner Evento <?= $event['nome_evento'] ?>" class="figure-img img-fluid rounded-3 ">
             </figure>
           </div>
           <div class="col-md-7">
@@ -47,7 +47,7 @@
                   <i class="icon-Calendar"></i>
                   <p><?= $event['periodo_evento'] ?></p>
                 </div>
-                <a class="btn btn-red" href="../event/show/<?= $event['cod_evento'] ?>">Detalhes</a>
+                <a class="btn btn-red" href="../../event/show/<?= $event['cod_evento'] ?>">Detalhes</a>
               </div>
             </div>
           </div>
@@ -88,6 +88,3 @@
   </section>
 </div>
 </main>
-
-
-

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Portal de Eventos">
     <meta name="author" content="IFSP Codelab e colaboradores">
-    <title> IFSP - Portal de Eventos SCI</title>
+    <title>IFSP - Portal de Eventos SCI</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sticky-footer-navbar/">
     <!-- Bootstrap core CSS -->
@@ -137,6 +137,9 @@
 
   <!-- Bootstrap script -->
   <script src="../../assets/js/bootstrap.js"></script>
+
+  <!-- Font Awesome Script -->
+  <script src="https://kit.fontawesome.com/6726683f80.js" crossorigin="anonymous"></script>
 
   <!-- DataTables script -->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

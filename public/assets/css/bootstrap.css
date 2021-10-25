@@ -2416,7 +2416,7 @@ textarea.form-control-lg {
   background-position: right 0.75rem center;
   background-size: 16px 12px;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -2497,13 +2497,13 @@ textarea.form-control-lg {
   filter: brightness(90%);
 }
 .form-check-input:focus {
-  border-color: #86b7fe;
+  border-color: var(--bs-green-light);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 0.25rem var(--bs-green-light);
 }
 .form-check-input:checked {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: var(--bs-green);
+  border-color: var(--bs-green-medium);
 }
 .form-check-input:checked[type=checkbox] {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
@@ -4509,7 +4509,7 @@ textarea.form-control-lg {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 0.625rem;
 }
 .card > hr {
   margin-right: 0;
@@ -7712,6 +7712,11 @@ textarea.form-control-lg {
 .text-success {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-success-rgb), var(--bs-text-opacity)) !important;
+}
+
+.text-green {
+  --bs-text-opacity: 1;
+  color: var(--bs-green) !important;
 }
 
 .text-info {
@@ -11324,10 +11329,14 @@ i{
   overflow-x: auto;
 }
 
+.event-show .table-activities div.row{
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .event-show table{
   background-color: var(--bs-red-medium);
   color: var(--bs-white);
-  display: block;
   border-radius: 0.625rem;
   border-collapse: collapse;
   width: 69.75rem;
@@ -11355,9 +11364,19 @@ i{
   border-right: none;
 }
 
+.event-show th:first-child, .event-show td:first-child, .table-activities div.col-md-5{
+  display: none;
+}
+
 .event-show table thead th span{
   display: flex;
   align-items: center;
+}
+
+.table-activities div.col-md-7{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .event-show  .banner .card{
@@ -11434,6 +11453,31 @@ i{
 .buttons a{
   width: 17.5rem;
   padding: 0.75rem
+}
+
+ul.pagination, .dataTables_paginate ul{
+  display: flex;
+}
+
+ul.pagination, .dataTables_paginate ul li{
+  list-style: none;
+}
+
+.dataTables_paginate ul{
+  margin-top: 1rem;
+  padding-left: 0;
+}
+
+.page-item .page-link, .page-item.active .page-link{
+  background-color: var(--bs-white);
+  border-color: var(--bs-green);
+  color: var(--bs-green);
+}
+
+.page-item .page-link:hover, .page-item.active .page-link:hover{
+  color: var(--bs-white);
+  background-color: var(--bs-green);
+  border-color: var(--bs-white);
 }
 
 /* footer */
@@ -11634,6 +11678,20 @@ footer{
     max-width: 90vw;
     min-width: 18rem;
   }
+
+  /* form new event */
+  .formNew{
+    padding: 1rem;
+    width: 95%;
+  }
+
+  div.row.row-form{
+    flex-direction: column;
+  }
+
+  .form-mb{
+    margin-bottom: 1rem;
+  }
 }
 
 /* Input Search Icon */
@@ -11652,4 +11710,62 @@ footer{
   text-align: center;
   pointer-events: none;
   color: #aaa;
+}
+
+/* create event */
+.formNew{
+  padding: 3rem;
+}
+
+.dropzone.form-control{
+  border: 1px dashed var(--bs-gray-400);
+  height: 6.5rem;
+}
+
+.dropzone.form-control.hover{
+  border: 1px dashed var(--bs-green) !important;
+}
+
+.dropzone.form-control label{
+  border: 1px solid var(--bs-green);
+  border-radius: 0.625rem;
+  padding: 0.625rem;
+  width: fit-content;
+  z-index: 2;
+  transition: 0.2s;
+}
+
+.dropzone.form-control label:hover{
+  transform: scale(1.02);
+}
+
+.dropzone.form-control small{
+  display: block;
+}
+
+.dragData{
+  display: none;
+}
+
+input[type='file']{
+  opacity: 0;
+  border: 1px solid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+textarea{
+  resize: none;
+}
+
+#amount{
+  display: none;
+}
+
+/* temporario */
+.dataTables_length, .dataTables_filter, .dataTables_paginate{
+  display: none;
 }
