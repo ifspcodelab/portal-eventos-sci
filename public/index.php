@@ -39,7 +39,7 @@
       <div class="container">
 
         <a class="navbar-brand" href="../../"> 
-          <img src="../../assets/img/logo.png" alt="Logo Portal de Eventos SCI Imagem">
+          <img src="/assets/img/logo.png" alt="Logo Portal de Eventos SCI Imagem">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" >
@@ -86,12 +86,12 @@
 
   ?>
 
-  <footer class="footer mt-auto py-3">
+  <footer class="footer mt-auto pt-3">
     <div class="container">
       <div class="row footer-align">
         <div class="col-sm footer-scale footer-order-1">
-          <img src="../../assets/img/logo.png" alt="Logo Portal de Eventos SCI Imagem">
-          <img src="../../assets/img/logoIFSP.png" alt="Logo Instituto Federal de São Paulo Imagem">
+          <img src="/assets/img/logo.png" alt="Logo Portal de Eventos SCI Imagem">
+          <img src="/assets/img/logoIFSP.png" alt="Logo Instituto Federal de São Paulo Imagem">
         </div>
         <div class="col-sm footer-order-2">
           <ul class="nav flex-column">

@@ -1,10 +1,12 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/event/create.css">
+
 <!-- Criar novo evento -->
 <main class="flex-shrink-0">
-    <div class="container my-5 card formNew">
+    <div class="container my-5 card p-5 formNew">
         <h2 class="text-green"> <strong> Novo Evento </strong> </h2>
         <hr class="mt-0 mb-4 bg-light">
 
-        <form class="" action="/event/createevent" method="POST">
+        <form class="needs-validation " action="/event/createevent" method="POST">
             <!-- Novo evento -->
             <div class="row g-2 mb-1">
                 <div class="col-md-6 px-3">
@@ -12,7 +14,7 @@
                         <div class="row g-2 mb-4 row-form">
                             <div class="col col-lg">
                                 <label for="inputEvent" class="col-md col-form-label">Nome do Evento</label>
-                                <input type="text" class="form-control pt-2 pb-2" name="inputEvent" id="inputEvent" placeholder="Informe o nome do evento">
+                                <input type="text" class="form-control pt-2 pb-2" name="inputEvent" id="inputEvent" placeholder="Informe o nome do evento" required>
                             </div>
                             <div class="col col-sm-4">
                                 <label for="inputEventSigla" class="col-md col-form-label">Sigla</label>
@@ -22,7 +24,7 @@
                     </div>
                     <div class="mb-2">
                         <label for="inputDescription" class="col-md col-form-label">Descrição</label>
-                        <textarea type="text" class="form-control pt-2 pb-5" name="inputDescription" id="inputDescription" placeholder="Descreva o evento resumidamente"></textarea>
+                        <textarea type="text" class="form-control pt-2 pb-5" name="inputDescription" id="inputDescription" placeholder="Descreva o evento resumidamente" required></textarea>
                     </div>
                 </div>
                 <div class="col-md-6 px-3">
@@ -30,7 +32,7 @@
                         <label class="col-form-label" for="autoSizingSelect">Período</label>
 
                         <div class="col form-mb">
-                            <select class="form-select pt-2 pb-2" name="selectPeriodoMes" id="autoSizingSelect">
+                            <select class="form-select pt-2 pb-2" name="selectPeriodoMes" id="autoSizingSelect" required>
                                 <option selected>Mês</option>
                                 <option value="Janeiro">Janeiro</option>
                                 <option value="Fevereiro">Fevereiro</option>
@@ -48,7 +50,7 @@
                         </div>
 
                         <div class="col">
-                            <input class="form-control pt-2 pb-2" list="datalistOptions" name="inputPeriodoAno" id="numberDataList" placeholder="Ano" type="number" placeholder="YYYY" min="2021" max="2100">
+                            <input class="form-control pt-2 pb-2" list="datalistOptions" name="inputPeriodoAno" id="numberDataList" placeholder="Ano" type="number" placeholder="YYYY" min="2021" max="2100" required>
                         </div>
                     </div>
 
@@ -78,11 +80,11 @@
                 <div class="col-md-6 px-3">
                     <div class="mb-2">
                         <label for="inputActivity" class="col-md col-form-label">Nome da Atividade</label>
-                        <input type="text" class="form-control pt-2 pb-2" name="inputActivity" id="inputActivity" placeholder="Informe o nome da atividade">
+                        <input type="text" class="form-control pt-2 pb-2" name="inputActivity" id="inputActivity" placeholder="Informe o nome da atividade" required>
                     </div>
                     <div class="mb-4">
                         <label for="inputDescriptionActivity" class="col-md col-form-label">Descrição</label>
-                        <textarea type="text" class="form-control pt-2 pb-5" name="descriptionActivity" id="inputDescriptionActivity" placeholder="Descreva a atividade"></textarea>
+                        <textarea type="text" class="form-control pt-2 pb-5" name="descriptionActivity" id="inputDescriptionActivity" placeholder="Descreva a atividade" required></textarea>
                     </div>
 
                     <div class="row g-2 mb-2">
@@ -114,13 +116,13 @@
 
                 <div class="col-md-6 px-3">
                     <div class="row g-2 mb-2 row-form" style="margin-top: 0">
-                        <label class="col-form-label" for="autoSizingSelectDate">Data</label>
+                        <label class="col-form-label" for="autoSizingSelectDate">Data e Hora</label>
                         <div class="col form-mb">
-                            <input type="text" placeholder="Início" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataInicio" id="autoSizingSelectDate" value="Início">
+                            <input type="text" placeholder="Início" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataInicio" id="autoSizingSelectDate" value="Início">
                         </div>
 
                         <div class="col">
-                            <input type="text" placeholder="Fim" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataFim" id="autoSizingSelectDate" value="Fim">
+                            <input type="text" placeholder="Fim" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataFim" id="autoSizingSelectDate" value="Fim">
                         </div>
                     </div>
 
@@ -198,11 +200,11 @@
                     <div class="row row-form">
                         <div class="mb-2 col">
                             <label for="inputTel" class="col-md col-form-label">Telefone</label>
-                            <input type="tel" class="form-control pt-2 pb-2" id="inputName" name="inputTel" placeholder="(99) 9999-9999">
+                            <input type="tel" class="form-control pt-2 pb-2" id="inputName" name="inputTel" placeholder="(99) 9999-9999" maxlength="14">
                         </div>
                         <div class="mb-2 col">
                             <label for="inputCel" class="col-md col-form-label">Celular</label>
-                            <input type="tel" class="form-control pt-2 pb-2" id="inputCel" name="inputCel" placeholder="(99) 99999-9999">
+                            <input type="tel" class="form-control pt-2 pb-2" id="inputCel" name="inputCel" placeholder="(99) 99999-9999" autocomplete="off" maxlength="14">
                         </div>
                     </div>
                     <div class="mb-2">
@@ -282,57 +284,5 @@
     </div>
 </main>
 
-<script type="text/javascript">
 
-function showAmount(show){
-    if(show == 1){
-        console.log('checkado')
-        document.getElementById('amount').style.display = "block"
-    }
-    else{
-        console.log('descheckado')
-        document.getElementById('amount').style.display = "none"
-    }
-}
-
-
-
-function readFile(e) {
-  var files;
-  if (e.target.files) {
-    files=e.target.files
-  } else {
-    files=e.dataTransfer.files
-  }
-  if (files.length==0) {
-    alert('What you dropped is not a file.');
-    return;
-  }
-  var file=files[0];
-  document.getElementById('fileDragName').value = file.name
-  document.getElementById('fileDragSize').value = file.size
-  document.getElementById('fileDragType').value = file.type
-  reader = new FileReader();
-  reader.onload = function(e) {
-    document.getElementById('fileDragData').value = e.target.result;
-  }
-  document.getElementById('labelFile').innerHTML = "Arquivo selecionado";
-  reader.readAsDataURL(file);
-}
-function getTheFile(e) {
-  e.target.style.borderColor='#ccc';
-  readFile(e);
-}
-
-var holder = document.getElementById('inputGroupFile01');
-holder.ondragover = function () { 
-    this.classList.add('hover'); 
-    return false; 
-};
-
-holder.ondragleave = function () { 
-    this.classList.remove('hover'); 
-    return false; 
-};
-
-</script>
+<script type="text/javascript" language="javascript" src="/assets/js/event/create.js"></script>

@@ -16,7 +16,7 @@
 
 <!-- Adicionar novo evento -->
 <!-- Acesso restrito ao Admnistrador -->
-<div class="container mb-4 d-flex justify-content-end">
+<div class="container my-4 d-flex justify-content-end">
   <a href="../../event/create" role="button" class="btn btn-outline-light d-flex align-items-center shadow-sm bg-white">
     <span class="text-dark">Novo Evento</span> 
     <i class="icon-Add-New text-success"></i>
@@ -30,7 +30,7 @@
   <aside class="calendar">
 
   </aside>
-  <section class="event-list mb-5 ">
+  <section class="event-list mb-5">
   <?php foreach ($data['events'] as $event): ?>
     <div class="events">
       <div class="card mb-3">
@@ -61,7 +61,7 @@
   <!-- Pagination Button -->
   <nav>
     <ul class="pagination justify-content-center">
-      <?php if($currentPage> 1): ?>
+      <?php if($currentPage > 1): ?>
       <li class="page-item">
         <a class="page-link" href="../../event/index/<?=($currentPage - 1)?>" aria-label="Previous" id="prev">
           <span aria-hidden="true">&laquo;</span>

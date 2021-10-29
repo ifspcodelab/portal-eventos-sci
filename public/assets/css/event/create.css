@@ -1,0 +1,74 @@
+/* create event */
+.formNew{
+    padding: 3rem;
+}
+  
+.dropzone.form-control{
+    border: 1px dashed var(--bs-gray-400);
+    height: 6.5rem;
+}
+  
+.dropzone.form-control.hover{
+    border: 1px dashed var(--bs-green) !important;
+}
+  
+.dropzone.form-control label{
+    border: 1px solid var(--bs-green);
+    border-radius: 0.625rem;
+    padding: 0.625rem;
+    width: fit-content;
+    z-index: 2;
+    transition: 0.2s;
+}
+  
+.dropzone.form-control label:hover{
+    transform: scale(1.02);
+}
+  
+.dropzone.form-control small{
+    display: block;
+    text-align: center;
+}
+  
+.dragData{
+    display: none;
+}
+  
+input[type='file']{
+    opacity: 0;
+    border: 1px solid;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+  
+textarea{
+    resize: none;
+}
+  
+#amount{
+    display: none;
+}
+
+@media(max-width: 576px){
+/* form new event */
+.formNew{
+    padding: 1rem;
+    width: 95%;
+}
+ 
+div.row.row-form{
+    flex-direction: column;
+}
+ 
+.form-mb{
+    margin-bottom: 1rem;
+}
+
+.p-5{
+    padding: 1.5rem !important;
+}
+}
+  

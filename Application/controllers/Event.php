@@ -36,7 +36,7 @@ class Event extends Controller
   * não seja informado, é chamado a view de página não encontrada.
   * @param  int   $id   Identificado do usuário.
   */
-  public function show($id = null)
+  public function show($id = null, $idActivity = null)
   {
     if (is_numeric($id))
     {
@@ -44,9 +44,12 @@ class Event extends Controller
       $dataEvents = $Events::findById($id);
 
       $Activities = $this->model('Activities');
-      $dataActivities = $Activities::findByEventId($id);
+      $dataActivities = $Activities::findByActivityId($id);
+      
+      $Involved = $this->model('People');
+      $dataInvolved = $Involved::findById($idActivity);
 
-      $this->view('event/show', ['events' => $dataEvents, 'activities' => $dataActivities]);
+      $this->view('event/show', ['events' => $dataEvents, 'activities' => $dataActivities, 'involved' => $dataInvolved]);
     }
     else
     {
@@ -78,28 +81,30 @@ class Event extends Controller
 
   public function createEvent()
   {
-    
     if (isset($_POST['inputEvent']))
     {
       $dataEvent = array(
-        'nome_evento' => $_POST['inputEvent'],
-        'sigla_evento' => $_POST['inputEventSigla'],
-        'descricao_evento' => $_POST['inputDescription'],
-        'periodo_evento' => $_POST['selectPeriodoMes'].'/'.$_POST['inputPeriodoAno'],
-        'img_evento' => $_POST['fileDragData']
+        'nome_evento'       => $_POST['inputEvent'],
+        'sigla_evento'      => $_POST['inputEventSigla'],
+        'descricao_evento'  => $_POST['inputDescription'],
+        'periodo_evento'    => $_POST['selectPeriodoMes'].'/'.$_POST['inputPeriodoAno'],
+        'img_evento'        => $_POST['fileDragData']
       );
-        $dataActivities = array(
-          'nome_atividade' => $_POST['inputActivity'],
-          'data_inicio' => (int) $_POST['dataInicio'],
-          'data_fim' => (int) $_POST['dataFim'],
-          'descricao_atividade' => $_POST['descriptionActivity'],
-          'observacao_atividade' => $_POST['observationActivity'],
-          'preco_inscricao' => (float) $_POST['inputAmount'],
-          'pontuacao_atividade' => (float) $_POST['PointsDataList'],
-          'area_atividade' => $_POST['AreaDataList'],
-          'link_atividade' => $_POST['inputLinkActivity'],
-          'link_inscricao_atividade' => $_POST['inputLinkSubscription']
+        $activity = array(
+          'nome_atividade'            => $_POST['inputActivity'][0],
+          'data_inicio'               => $_POST['dataInicio'],
+          'data_fim'                  => $_POST['dataFim'],
+          'descricao_atividade'       => $_POST['descriptionActivity'],
+          'observacao_atividade'      => $_POST['observationActivity'],
+          'preco_inscricao'           => $_POST['inputAmount'],
+          'pontuacao_atividade'       => $_POST['PointsDataList'],
+          'area_atividade'            => $_POST['AreaDataList'],
+          'link_atividade'            => $_POST['inputLinkActivity'],
+          'link_inscricao_atividade'  => $_POST['inputLinkSubscription']
         );
+        $dataActivities = array();
+        array_push($dataActivities, $activity1);
+        var_dump($_POST['inputActivity'.'1']);
       $Events = $this->model('Events');
       $data = $Events::createEvent((array)$dataEvent, (array)$dataActivities);
       $this->view('event/index', ['events' => $data, 'banner' => true, 'banner_template' => 'commons/banner']);

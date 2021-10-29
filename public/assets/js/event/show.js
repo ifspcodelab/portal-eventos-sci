@@ -4,6 +4,18 @@ $(document).ready(function() {
             paging: true,
             searching: true,
             ordering:  true,
+            "language": {
+              "lengthMenu": "Exibir _MENU_ por página",
+              "zeroRecords": "Nenhuma atividade encontrada",
+              "info": "Exibindo _PAGE_ de _PAGES_",
+              "infoEmpty": "Nenhuma atividade disponível",
+              "infoFiltered": "(Filtrado de _MAX_ registros totais)",
+              "search": "Buscar",
+              "paginate": {
+                "previous": "&laquo;",
+                "next": "&raquo;"
+              }
+          }
         }
     );
 });

@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/jquery.dataTables.min.css">
-<link href="/assets/css/event/show.css" rel="stylesheet" type="text/css" >
+<link rel="stylesheet" type="text/css" href="/assets/css/event/show.css">
+
 
 <!-- Descrição dos Eventos -->
 <main>
@@ -10,7 +11,7 @@
     $endDate    = null;
     $startTime  = null;
     $endTime    = null;
-
+    $activityPosition = array();
     
   ?>
   <div class="container mt-5 mb-5 event-show">
@@ -52,7 +53,7 @@
                 <th class="col-3"><span><i class="icon-Search"></i> Atividade</span></th>
                 <th class="col-3"><span><i class="icon-New-Document"></i> Descrição</span></th>
                 <th class="col-3"><span><i class="icon-Note"></i> Observação</span></th>
-                <th class="col-1"></th>
+                <th class="col-1 th-icons plus"><span><i>&#x2b;</i></span></th>
               </tr>
             </thead>
             <tbody>
@@ -99,7 +100,10 @@
                 <td><?= $activity['nome_atividade'] ?> - <span><?= $activity['preco_inscricao'] == 0.00 ? 'Gratuito' : 'R$ ' . number_format($activity['preco_inscricao'], 2, ',', '.') ?></span></td>
                 <td><?= $activity['descricao_atividade'] ?></td>
                 <td><?= $activity['observacao_atividade'] ?></td>
-                <td><a href="/event/show/<?=$cod_evento?>/<?=$activity['cod_atividade']?>">Ver detalhes</a></td>
+                <td><a href="/event/show/<?= $cod_evento ?>/<?= $activity['cod_atividade'] ?>">Ver detalhes</a></td>
+                <?php
+                  array_push($activityPosition, $activity['cod_atividade']);
+                ?>
               </tr>
               <?php } ?>
             </tbody>
@@ -107,41 +111,48 @@
         </div>
       </div>
       <div id="activities_detail">
+        <?php if(isset($data['involved'])){ ?>
+        <?php foreach($data['involved'] as $involved) : ?>
+        <?php if(trim($data['involved'][0]['nome_contato']) != "" && trim($data['involved'][1]['nome_contato']) != ""){ ?>
         <div class="mt-5">
-          <h4>Organizadores do evento</h4>
+          <h4>Organizadores</h4>
           <div class="card mt-3">
             <div class="card-body">
               <div class="col-sm">
-                <img src="../../assets/img/circle red.png" alt="">
+                <img src="/assets/img/circle red.png" alt="">
                 <div>
                   <div class="row">
-                    <h5 id="externalName">João</h5>
+                    <h5 id="externalName"><?= $data['involved'][1]['nome_contato'] ?></h5>
                   </div>
                   <div class="row">
-                    <p id="externalOffice">Gerente de atividades externas</p>
+                    <p id="externalOffice"><?= trim($data['involved'][1]['area_contato_empresa']) == "" ? "" : $data['involved'][1]['area_contato_empresa'] ?></p>
                   </div>
                   <div class="row">
-                    <p id="externalAssociation">JA - Junior Achivement</p>
+                    <p id="externalAssociation"><?= trim($data['involved'][1]['nome_empresa']) == "" ? "" : $data['involved'][1]['nome_empresa'] ?></p>
                   </div>
                 </div>
               </div>
               <div class="col-sm">
-                <img src="../../assets/img/circle green.png" alt="">
+                <img src="/assets/img/circle green.png" alt="">
                 <div>
                   <div class="row">
-                    <h5 id="internalName">Antonio</h5>
+                    <h5 id="internalName"><?= $data['involved'][0]['nome_contato'] ?></h5>
                   </div>
                   <div class="row">
-                    <p id="internalOffice">Organizador</p>
+                    <p id="internalOffice"><?= trim($data['involved'][0]['papel_envolvido_ifsp']) == "" ? "" : $data['involved'][0]['papel_envolvido_ifsp'] ?></p>
                   </div>
                   <div class="row">
-                    <p id="internalAssociation">IFSP - Câmpus São Paulo</p>
+                    <p id="internalAssociation"><?= trim($data['involved'][0]['nome_departamento']) == "" ? "" : $data['involved'][0]['nome_departamento'] ?></p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <?php }
+          break;
+          endforeach;
+        } ?>
         <?php foreach ($data['events'] as $event) : ?>
         <div class="mt-5">
           
@@ -173,13 +184,23 @@
 
         <?php
 
+          $url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+          if ($url != ''){
+              $urls  = explode('/', $url);
+              foreach($urls as $position){
+                $position = $position;
+              }
+          }
+
+          $key = array_search($position, $activityPosition);
+
           $atividadeAtual = null;
           $linkAtividade = "#";
           $linkInscricaoAtividade = "#";
 
-          if(isset($data['activities']) && isset($data['activities'][0]))
+          if(isset($data['activities']) && isset($data['activities'][$key]))
           {
-            $atividadeAtual = $data['activities'][0];
+            $atividadeAtual = $data['activities'][$key];
           }
 
           if(isset($atividadeAtual['link_atividade']) && trim($atividadeAtual['link_atividade']) != "")
@@ -200,9 +221,7 @@
             $linkInscricaoAtividade = $event['link_inscricao_evento'];
           }
 
-
         ?>
-
         
         <div class="mt-5">
           <div class="row">
@@ -226,4 +245,4 @@
 <!-- DataTables script -->
 <script type="text/javascript" language="javascript" src="/assets/js/jquery-3.5.1.js"></script>
 <script type="text/javascript" language="javascript" src="/assets/js/jquery.dataTables.min.js"></script>
-<script src="/assets/js/event/show.js"></script>
+<script type="text/javascript" language="javascript" src="/assets/js/event/show.js"></script>
