@@ -1,5 +1,5 @@
-<section class="bg-green mb- py-2">
-  <div class="container text-light ">
+<section class="bg-green py-2">
+  <div class="container text-light">
   <div class="row mb-0">
     <div class="col-sm d-flex align-items-center">
       <div class="row">

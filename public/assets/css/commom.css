@@ -27,10 +27,19 @@ p{
   margin-top: 0!important;
 }
 
+.display-6{
+  font-size: 2rem!important;
+}
+
 /* components */
 .bg-green {
   --bs-bg-opacity: 1!important;
   background-color: var(--bs-green) !important;
+}
+
+.bg-red{
+  --bs-bg-opacity: 1!important;
+  background-color: var(--bs-red-medium) !important;
 }
 
 .card{
@@ -40,6 +49,11 @@ p{
 .text-green {
   --bs-text-opacity: 1!important;
   color: var(--bs-green) !important;
+}
+
+.text-red {
+  --bs-text-opacity: 1!important;
+  color: var(--bs-red-medium) !important;
 }
 
 

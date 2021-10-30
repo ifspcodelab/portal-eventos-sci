@@ -6,16 +6,19 @@
         <h2 class="text-green"> <strong> Novo Evento </strong> </h2>
         <hr class="mt-0 mb-4 bg-light">
 
-        <form class="needs-validation " action="/event/createevent" method="POST">
+        <form class="needs-validation " action="/event/createEvent" method="POST">
             <!-- Novo evento -->
             <div class="row g-2 mb-1">
                 <div class="col-md-6 px-3">
                     <div class="mb-2">
                         <div class="row g-2 mb-4 row-form">
+                            <!-- Nome -->
                             <div class="col col-lg">
                                 <label for="inputEvent" class="col-md col-form-label">Nome do Evento</label>
                                 <input type="text" class="form-control pt-2 pb-2" name="inputEvent" id="inputEvent" placeholder="Informe o nome do evento" required>
+                                <span class="error"></span>
                             </div>
+                            <!-- Sigla -->
                             <div class="col col-sm-4">
                                 <label for="inputEventSigla" class="col-md col-form-label">Sigla</label>
                                 <input type="text" class="form-control pt-2 pb-2" name="inputEventSigla" id="inputEventSigla" placeholder="Sigla do Evento">
@@ -23,15 +26,19 @@
                         </div>
                     </div>
                     <div class="mb-2">
+                        <!-- Descrição -->
                         <label for="inputDescription" class="col-md col-form-label">Descrição</label>
                         <textarea type="text" class="form-control pt-2 pb-5" name="inputDescription" id="inputDescription" placeholder="Descreva o evento resumidamente" required></textarea>
+                        <span class="error"></span>
                     </div>
                 </div>
                 <div class="col-md-6 px-3">
+                    <!-- Período -->
                     <div class="row g-2 mb-4 row-form">
                         <label class="col-form-label" for="autoSizingSelect">Período</label>
 
                         <div class="col form-mb">
+                            <!-- Mês -->
                             <select class="form-select pt-2 pb-2" name="selectPeriodoMes" id="autoSizingSelect" required>
                                 <option selected>Mês</option>
                                 <option value="Janeiro">Janeiro</option>
@@ -47,13 +54,17 @@
                                 <option value="Novembro">Novembro</option>
                                 <option value="Dezembro">Dezembro</option>
                             </select>
+                            <span class="error"></span>
                         </div>
 
                         <div class="col">
+                            <!-- Ano -->
                             <input class="form-control pt-2 pb-2" list="datalistOptions" name="inputPeriodoAno" id="numberDataList" placeholder="Ano" type="number" placeholder="YYYY" min="2021" max="2100" required>
+                            <span class="error"></span>
                         </div>
                     </div>
 
+                    <!-- Banner -->
                     <div class="mb-3">
                         <label class="col-md col-form-label" for="inputGroupFile01">Banner</label>
                         <div class="input-group mb-3 dropzone dz-clickable form-control d-flex justify-content-center" id="inputGroupFile01" onchange="readFile(event)">
@@ -73,21 +84,28 @@
 
                 </div>
             </div>
+
+
             <!-- Atividade -->
             <h2 class="text-secondary"> <strong> Atividade </strong> </h2>
             <hr class="mt-0 mb-4 bg-light">
             <div class="row g-2 mb-3">
                 <div class="col-md-6 px-3">
+                    <!-- Nome -->
                     <div class="mb-2">
                         <label for="inputActivity" class="col-md col-form-label">Nome da Atividade</label>
                         <input type="text" class="form-control pt-2 pb-2" name="inputActivity" id="inputActivity" placeholder="Informe o nome da atividade" required>
+                        <span class="error"></span>
                     </div>
+                    <!-- Descrição -->
                     <div class="mb-4">
                         <label for="inputDescriptionActivity" class="col-md col-form-label">Descrição</label>
                         <textarea type="text" class="form-control pt-2 pb-5" name="descriptionActivity" id="inputDescriptionActivity" placeholder="Descreva a atividade" required></textarea>
+                        <span class="error"></span>
                     </div>
 
                     <div class="row g-2 mb-2">
+                        <!-- Gratuidade -->
                         <div class="col col-sm-auto">
                             <label for="inputCheckbox" class="col-md col-form-label mb-3">Gratuito?</label>
                             <div class="row g-2 mx-2">
@@ -106,32 +124,42 @@
                             </div> 
                         </div>
                         <div class="col col-lg">
+                            <!-- Preço -->
                             <div class="mb-2" id="amount">
                                 <label for="inputAmount" class="col-md col-form-label">Preço</label>
-                                <input type="number" step="0.01" name="inputAmount" id="inputAmount" placeholder="Informe o custo de participação na atividade" class="form-control pt-2 pb-2">
+                                <input type="number" step="0.01" name="inputAmount" id="inputAmount" placeholder="Informe o custo de participação na atividade" class="form-control pt-2 pb-2"
+                                >
+                                <span class="error"></span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-6 px-3">
+                    <!-- Data e Hora -->
                     <div class="row g-2 mb-2 row-form" style="margin-top: 0">
                         <label class="col-form-label" for="autoSizingSelectDate">Data e Hora</label>
                         <div class="col form-mb">
-                            <input type="text" placeholder="Início" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataInicio" id="autoSizingSelectDate" value="Início">
+                            <input type="text" placeholder="Início" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataInicio" id="autoSizingSelectDate" value="Início"
+                            required>
+                            <span class="error"></span>
                         </div>
 
                         <div class="col">
-                            <input type="text" placeholder="Fim" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataFim" id="autoSizingSelectDate" value="Fim">
+                            <input type="text" placeholder="Fim" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataFim" id="autoSizingSelectDate" value="Fim"
+                            required>
+                            <span class="error"></span>
                         </div>
                     </div>
 
+                    <!-- Observação -->
                     <div class="mb-4">
                         <label for="inputObservation" class="col-md col-form-label">Observação</label>
                         <textarea type="text" class="form-control pt-2 pb-5" name="observationActivity" id="inputObservation" placeholder="Caso a atividade possua alguma observação"></textarea>
                     </div>
 
                     <div class="row g-2 mb-2 row-form">
+                        <!-- Pontuação -->
                         <div class="col">
                             <label for="PointsDataList" class="form-label col-form-label">Pontuação</label>
                             <input class="form-control pt-2 pb-2" list="datalistOptionsPoints" name="PointsDataList" id="PointsDataList" placeholder="Pontos">
@@ -142,24 +170,30 @@
                             </datalist>
                         </div>
 
+                        <!-- Área -->
                         <div class="col">
                             <label for="AreaDataList" class="form-label col-form-label">Área</label>
                             <input class="form-control pt-2 pb-2" list="datalistOptionsArea" name="AreaDataList" id="AreaDataList" placeholder="Área">
-                            <datalist id="datalistOptionsArea">
+                            <datalist id="datalistOptionsArea" required>
                                 <option value="Programação"></option>
                                 <option value="Redes"></option>
                                 <option value="Jogos Digitais"></option>
                                 <option value="Inovação"></option>
                             </datalist>
+                            <span class="error"></span>
                         </div>
+
                     </div>
                 </div>
             </div>
+
+            <!-- Links -->
             <div class="row g-2 mb-4">
                 <div class="col px-3">
                     <div class="mb-2">
                         <label for="inputLinkActivity" class="col-md col-form-label">Link da atividade</label>
-                        <input type="url" class="form-control pt-2 pb-2" name="inputLinkActivity" id="inputLinkActivity" placeholder="Informe o link da atividade"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" >
+                        <input type="url" class="form-control pt-2 pb-2" name="inputLinkActivity" id="inputLinkActivity" placeholder="Informe o link da atividade"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="mb-2">
@@ -169,7 +203,7 @@
                 </div>
             </div>
 
-            <!-- Add More Button -->
+            <!-- Add More Button - Atividade -->
             <div class="row g-2 mb-4 d-flex flex-column">
                 <div class="col px-3">
                     <label for="inputAddMoreActivity" class="col-md col-form-label">Deseja adicionar mais uma atividade?</label>
@@ -193,35 +227,49 @@
             <hr class="mt-0 mb-4 bg-light">
             <div class="row g-2">
                 <div class="col-md-6 px-3">
+                    <!-- Nome -->
                     <div class="mb-2">
                         <label for="inputName" class="col-md col-form-label">Nome</label>
-                        <input type="text" class="form-control pt-2 pb-2" id="inputName" name="name" placeholder="Informe o nome da pessoa envolvida na atividade">
+                        <input type="text" class="form-control pt-2 pb-2" id="inputName" name="name" placeholder="Informe o nome da pessoa envolvida na atividade" required>
+                        <span class="error"></span>
                     </div>
                     <div class="row row-form">
+                        <!-- Telefone -->
                         <div class="mb-2 col">
                             <label for="inputTel" class="col-md col-form-label">Telefone</label>
-                            <input type="tel" class="form-control pt-2 pb-2" id="inputName" name="inputTel" placeholder="(99) 9999-9999" maxlength="14">
+                            <input type="tel" class="form-control pt-2 pb-2" id="inputName" name="inputTel" placeholder="(99) 9999-9999" maxlength="14" data-js="phone">
                         </div>
+                        <!-- Celular -->
                         <div class="mb-2 col">
                             <label for="inputCel" class="col-md col-form-label">Celular</label>
-                            <input type="tel" class="form-control pt-2 pb-2" id="inputCel" name="inputCel" placeholder="(99) 99999-9999" autocomplete="off" maxlength="14">
+                            <input type="tel" class=" form-control pt-2 pb-2" id="inputCel" name="inputCel" placeholder="(99) 99999-9999" autocomplete="off" maxlength="15"
+                            data-js="phone"
+                            required>
+                            <span class="error"></span>
                         </div>
                     </div>
+
+                    <!-- Empresa -->
                     <div class="mb-2">
                         <label for="BusinessDataList" class="form-label col-form-label">Empresa</label>
                         <input class="form-control pt-2 pb-2" list="datalistOptionsBusiness" id="BusinessDataList" placeholder="Informe o nome da empresa">
-                        <datalist id="datalistOptionsBusiness">
+                        <datalist id="datalistOptionsBusiness" required>
                             <option value="JASP"></option>
                             <option value="SAP"></option>
                         </datalist>
+                        <span class="error"></span>
                     </div>
                 </div>
 
                 <div class="col-md-6 px-3">
+                    <!-- Email do envolvido -->
                     <div class="mb-2">
                         <label for="inputEmail" class="col-md col-form-label">E-mail</label>
-                        <input type="email" class="form-control pt-2 pb-2" name="email" id="inputEmail" placeholder="Informe um e-mail para contato"></input>
+                        <input type="email" class="form-control pt-2 pb-2" name="email" id="inputEmail" placeholder="Informe um e-mail para contato" required></input>
+                        <span class="error"></span>
                     </div>
+
+                    <!-- Externo ou Interno -->
                     <div class="mb-2">
                         <label for="inputCheckbox" class="col-md col-form-label mb-2">Relação com o IFSP</label>
                         <div class="row g-2 mx-2 pt-2 pb-2">
@@ -239,24 +287,27 @@
                             </div>
                         </div> 
                     </div>
+                    <!-- Email da empresa -->
                     <div class="mb-2">
                         <label for="inputEmailCompany" class="col-md col-form-label">E-mail</label>
                         <input type="email" class="form-control pt-2 pb-2" name="inputEmailCompany" id="inputEmailCompany" placeholder="Informe um e-mail para contato com a empresa"></input>
                     </div>
+
                 </div>
             </div>
-            <div class="row g-2 mb-4">     
-            </div>
+
             <div class="row g-2 mb-4">
                 <div class="col px-3">
+                    <!-- Site da empresa -->
                     <div class="mb-2">
                         <label for="inputLinkBusiness" class="col-md col-form-label">Site</label>
                         <input type="url" class="form-control pt-2 pb-2" id="inputLinkBusiness" placeholder="Informe o link do site da empresa"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" >
-                    </div>    
+                    </div>  
+
                 </div>      
             </div>
 
-            <!-- Add More Button -->
+            <!-- Add More Button - Envolvido -->
             <div class="row g-2 mb-4 d-flex flex-column">
                 <div class="col px-3">
                     <label for="inputAddMorePearson" class="col-md col-form-label">Deseja adicionar mais uma pessoa envolvida?</label>
@@ -284,5 +335,7 @@
     </div>
 </main>
 
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script type="text/javascript" language="javascript" src="/assets/js/event/create.js"></script>
