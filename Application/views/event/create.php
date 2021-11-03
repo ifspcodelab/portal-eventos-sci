@@ -81,144 +81,148 @@
                             <input id="fileDragData" name="fileDragData">
                         </div>
                     </div>
-
                 </div>
             </div>
-
 
             <!-- Atividade -->
-            <h2 class="text-secondary"> <strong> Atividade </strong> </h2>
-            <hr class="mt-0 mb-4 bg-light">
-            <div class="row g-2 mb-3">
-                <div class="col-md-6 px-3">
-                    <!-- Nome -->
-                    <div class="mb-2">
-                        <label for="inputActivity" class="col-md col-form-label">Nome da Atividade</label>
-                        <input type="text" class="form-control pt-2 pb-2" name="inputActivity" id="inputActivity" placeholder="Informe o nome da atividade" required>
-                        <span class="error"></span>
-                    </div>
-                    <!-- Descrição -->
-                    <div class="mb-4">
-                        <label for="inputDescriptionActivity" class="col-md col-form-label">Descrição</label>
-                        <textarea type="text" class="form-control pt-2 pb-5" name="descriptionActivity" id="inputDescriptionActivity" placeholder="Descreva a atividade" required></textarea>
-                        <span class="error"></span>
-                    </div>
-
-                    <div class="row g-2 mb-2">
-                        <!-- Gratuidade -->
-                        <div class="col col-sm-auto">
-                            <label for="inputCheckbox" class="col-md col-form-label mb-3">Gratuito?</label>
-                            <div class="row g-2 mx-2">
-                                <div class="col form-check" id="inputCheckbox">
-                                    <input class="form-check-input" type="radio" name="precoAtividade" id="inputCheckboxYes" onclick="showAmount(1)">
-                                    <label class="form-check-label" for="inputCheckboxYes">
-                                        Sim
-                                    </label>
+            <div>
+                <div id="activities">
+                    <h2 class="text-secondary"> <strong> Atividade </strong> </h2>
+                    <hr class="mt-0 mb-4 bg-light">
+                    <fieldset id="activity" name="activities">
+                        <div class="row g-2 mb-4">
+                            <div class="col-md-6 px-3">
+                                <!-- Nome -->
+                                <div class="mb-2">
+                                    <label for="inputActivity1" class="col-md col-form-label">Nome da Atividade</label>
+                                    <input type="text" class="form-control pt-2 pb-2" name="inputActivity1" id="inputActivity1" placeholder="Informe o nome da atividade" required>
+                                    <span class="error"></span>
                                 </div>
-                                <div class="col form-check" id="inputCheckbox">
-                                    <input class="form-check-input" type="radio" name="precoAtividade" id="inputCheckboxNo" onclick="showAmount(0)">
-                                    <label class="form-check-label" for="inputCheckboxNo">
-                                        Não
-                                    </label>
+                                <!-- Descrição -->
+                                <div class="mb-4">
+                                    <label for="inputDescriptionActivity1" class="col-md col-form-label">Descrição</label>
+                                    <textarea type="text" class="form-control pt-2 pb-5" name="descriptionActivity1" id="inputDescriptionActivity1" placeholder="Descreva a atividade" required></textarea>
+                                    <span class="error"></span>
                                 </div>
-                            </div> 
-                        </div>
-                        <div class="col col-lg">
-                            <!-- Preço -->
-                            <div class="mb-2" id="amount">
-                                <label for="inputAmount" class="col-md col-form-label">Preço</label>
-                                <input type="number" step="0.01" name="inputAmount" id="inputAmount" placeholder="Informe o custo de participação na atividade" class="form-control pt-2 pb-2"
-                                >
-                                <span class="error"></span>
+            
+                                <div class="row g-2 mb-2">
+                                    <!-- Gratuidade -->
+                                    <div class="col col-sm-auto">
+                                        <label for="inputCheckbox1" class="col-md col-form-label mb-3">Gratuito?</label>
+                                        <div class="row g-2 mx-2">
+                                            <div class="col form-check" id="inputCheckbox1">
+                                                <input class="form-check-input" type="radio" name="precoAtividade1" id="inputCheckboxYes1" onclick="showAmount(0)">
+                                                <label class="form-check-label" for="inputCheckboxYes1">
+                                                    Sim
+                                                </label>
+                                            </div>
+                                            <div class="col form-check" id="inputCheckbox1">
+                                                <input class="form-check-input" type="radio" name="precoAtividade1" id="inputCheckboxNo1" onclick="showAmount(1)">
+                                                <label class="form-check-label" for="inputCheckboxNo1">
+                                                    Não
+                                                </label>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="col col-lg">
+                                        <!-- Preço -->
+                                        <div class="mb-2" id="amount">
+                                            <label for="inputAmount1" class="col-md col-form-label">Preço</label>
+                                            <input type="number" step="0.01" name="inputAmount1" id="inputAmount1" placeholder="Informe o custo de participação na atividade" class="form-control pt-2 pb-2"
+                                            >
+                                            <span class="error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="col-md-6 px-3">
+                                <!-- Data e Hora -->
+                                <div class="row g-2 mb-2 row-form" style="margin-top: 0">
+                                    <label class="col-form-label" for="autoSizingSelectDate1">Data e Hora</label>
+                                    <div class="col form-mb">
+                                        <input type="text" placeholder="Início" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataInicio1" id="autoSizingSelectDate1" value="Início"
+                                        required>
+                                        <span class="error"></span>
+                                    </div>
+            
+                                    <div class="col">
+                                        <input type="text" placeholder="Fim" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataFim1" id="autoSizingSelectDate1" value="Fim"
+                                        required>
+                                        <span class="error"></span>
+                                    </div>
+                                </div>
+            
+                                <!-- Observação -->
+                                <div class="mb-4">
+                                    <label for="inputObservation1" class="col-md col-form-label">Observação</label>
+                                    <textarea type="text" class="form-control pt-2 pb-5" name="observationActivity1" id="inputObservation1" placeholder="Caso a atividade possua alguma observação"></textarea>
+                                </div>
+            
+                                <div class="row g-2 mb-2 row-form">
+                                    <!-- Pontuação -->
+                                    <div class="col">
+                                        <label for="PointsDataList1" class="form-label col-form-label">Pontuação</label>
+                                        <input class="form-control pt-2 pb-2" list="datalistOptionsPoints" name="PointsDataList1" id="PointsDataList1" placeholder="Pontos">
+                                        <datalist id="datalistOptionsPoints">
+                                            <option value="10"></option>
+                                            <option value="20"></option>
+                                            <option value="30"></option>
+                                        </datalist>
+                                    </div>
+            
+                                    <!-- Área -->
+                                    <div class="col">
+                                        <label for="AreaDataList1" class="form-label col-form-label">Área</label>
+                                        <input class="form-control pt-2 pb-2" list="datalistOptionsArea" name="AreaDataList1" id="AreaDataList1" placeholder="Área">
+                                        <datalist id="datalistOptionsArea" required>
+                                            <option value="Programação"></option>
+                                            <option value="Redes"></option>
+                                            <option value="Jogos Digitais"></option>
+                                            <option value="Inovação"></option>
+                                        </datalist>
+                                        <span class="error"></span>
+                                    </div>
+            
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 px-3">
-                    <!-- Data e Hora -->
-                    <div class="row g-2 mb-2 row-form" style="margin-top: 0">
-                        <label class="col-form-label" for="autoSizingSelectDate">Data e Hora</label>
-                        <div class="col form-mb">
-                            <input type="text" placeholder="Início" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataInicio" id="autoSizingSelectDate" value="Início"
-                            required>
-                            <span class="error"></span>
+            
+                        <!-- Links -->
+                        <div class="row g-2 mb-4">
+                            <div class="col px-3">
+                                <div class="mb-2">
+                                    <label for="inputLinkActivity1" class="col-md col-form-label">Link da atividade</label>
+                                    <input type="url" class="form-control pt-2 pb-2" name="inputLinkActivity1" id="inputLinkActivity1" placeholder="Informe o link da atividade"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" required>
+                                    <span class="error"></span>
+                                </div>
+            
+                                <div class="mb-2">
+                                    <label for="inputLinkSubscription1" class="col-md col-form-label">Link de inscrição</label>
+                                    <input type="url" class="form-control pt-2 pb-2" name="inputLinkSubscription1" id="inputLinkSubscription1" placeholder="Informe o link para inscrição na atividade"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" >
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="col">
-                            <input type="text" placeholder="Fim" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataFim" id="autoSizingSelectDate" value="Fim"
-                            required>
-                            <span class="error"></span>
-                        </div>
-                    </div>
-
-                    <!-- Observação -->
-                    <div class="mb-4">
-                        <label for="inputObservation" class="col-md col-form-label">Observação</label>
-                        <textarea type="text" class="form-control pt-2 pb-5" name="observationActivity" id="inputObservation" placeholder="Caso a atividade possua alguma observação"></textarea>
-                    </div>
-
-                    <div class="row g-2 mb-2 row-form">
-                        <!-- Pontuação -->
-                        <div class="col">
-                            <label for="PointsDataList" class="form-label col-form-label">Pontuação</label>
-                            <input class="form-control pt-2 pb-2" list="datalistOptionsPoints" name="PointsDataList" id="PointsDataList" placeholder="Pontos">
-                            <datalist id="datalistOptionsPoints">
-                                <option value="10"></option>
-                                <option value="20"></option>
-                                <option value="30"></option>
-                            </datalist>
-                        </div>
-
-                        <!-- Área -->
-                        <div class="col">
-                            <label for="AreaDataList" class="form-label col-form-label">Área</label>
-                            <input class="form-control pt-2 pb-2" list="datalistOptionsArea" name="AreaDataList" id="AreaDataList" placeholder="Área">
-                            <datalist id="datalistOptionsArea" required>
-                                <option value="Programação"></option>
-                                <option value="Redes"></option>
-                                <option value="Jogos Digitais"></option>
-                                <option value="Inovação"></option>
-                            </datalist>
-                            <span class="error"></span>
-                        </div>
-
-                    </div>
+            
+                    </fieldset>
                 </div>
-            </div>
-
-            <!-- Links -->
-            <div class="row g-2 mb-4">
-                <div class="col px-3">
-                    <div class="mb-2">
-                        <label for="inputLinkActivity" class="col-md col-form-label">Link da atividade</label>
-                        <input type="url" class="form-control pt-2 pb-2" name="inputLinkActivity" id="inputLinkActivity" placeholder="Informe o link da atividade"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" required>
-                        <span class="error"></span>
+                <!-- Add More Button - Atividade -->
+                <div class="row g-2 mb-4 d-flex flex-column">
+                    <div class="col px-3">
+                        <label for="inputAddMoreActivity" class="col-md col-form-label">Deseja adicionar mais uma atividade?</label>
                     </div>
-
-                    <div class="mb-2">
-                        <label for="inputLinkSubscription" class="col-md col-form-label">Link de inscrição</label>
-                        <input type="url" class="form-control pt-2 pb-2" name="inputLinkSubscription" id="inputLinkSubscription" placeholder="Informe o link para inscrição na atividade"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" >
+                    <div class="col px-3 input-group">
+                        <span class="input-group-btn px-2">
+                            <button type="button" class="btn btn-sm btn-green btn-number" data-type="minus">
+                                <span class="fas fa-minus"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn">
+                            <button id="addActivity" type="button" class="btn btn-sm btn-green btn-number addActivity" data-type="plus">
+                                <span class="fas fa-plus"></span>
+                            </button>
+                        </span>
                     </div>
-                </div>
-            </div>
-
-            <!-- Add More Button - Atividade -->
-            <div class="row g-2 mb-4 d-flex flex-column">
-                <div class="col px-3">
-                    <label for="inputAddMoreActivity" class="col-md col-form-label">Deseja adicionar mais uma atividade?</label>
-                </div>
-                <div class="col px-3 input-group">
-                    <span class="input-group-btn px-2">
-                        <button type="button" class="btn btn-sm btn-green btn-number" data-type="minus" >
-                            <span class="fas fa-minus"></span>
-                        </button>
-                    </span>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-sm btn-green btn-number" data-type="plus" >
-                            <span class="fas fa-plus"></span>
-                        </button>
-                    </span>
                 </div>
             </div>
 

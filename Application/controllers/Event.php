@@ -90,24 +90,26 @@ class Event extends Controller
         'periodo_evento'    => $_POST['selectPeriodoMes'].'/'.$_POST['inputPeriodoAno'],
         'img_evento'        => $_POST['fileDragData']
       );
-        $activity = array(
-          'nome_atividade'            => $_POST['inputActivity'][0],
-          'data_inicio'               => $_POST['dataInicio'],
-          'data_fim'                  => $_POST['dataFim'],
-          'descricao_atividade'       => $_POST['descriptionActivity'],
-          'observacao_atividade'      => $_POST['observationActivity'],
-          'preco_inscricao'           => $_POST['inputAmount'],
-          'pontuacao_atividade'       => $_POST['PointsDataList'],
-          'area_atividade'            => $_POST['AreaDataList'],
-          'link_atividade'            => $_POST['inputLinkActivity'],
-          'link_inscricao_atividade'  => $_POST['inputLinkSubscription']
-        );
-        $dataActivities = array();
-        array_push($dataActivities, $activity1);
-        var_dump($_POST['inputActivity'.'1']);
+      $dataActivity = array(
+        'nome_atividade'            => $_POST['inputActivity'],
+        'data_inicio'               => $_POST['dataInicio'],
+        'data_fim'                  => $_POST['dataFim'],
+        'descricao_atividade'       => $_POST['descriptionActivity'],
+        'observacao_atividade'      => $_POST['observationActivity'],
+        'preco_inscricao'           => $_POST['inputAmount'],
+        'pontuacao_atividade'       => $_POST['PointsDataList'],
+        'area_atividade'            => $_POST['AreaDataList'],
+        'link_atividade'            => $_POST['inputLinkActivity'],
+        'link_inscricao_atividade'  => $_POST['inputLinkSubscription']
+      );
+
       $Events = $this->model('Events');
-      $data = $Events::createEvent((array)$dataEvent, (array)$dataActivities);
-      $this->view('event/index', ['events' => $data, 'banner' => true, 'banner_template' => 'commons/banner']);
+      $dataEvents = $Events::createEvent((array)$dataEvent);
+
+      $Activities = $this->model('Activities');
+      $dataActivities = $Activities::createActivity((array)$dataActivity);
+
+      $this->view('/event/index', ['events' => $dataEvents, 'banner' => true, 'banner_template' => 'commons/banner']);
     }
     else
     {

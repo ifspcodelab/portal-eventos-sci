@@ -42,7 +42,7 @@
           </div>
           <div class="col-md-7">
             <div class="card-body">
-              <h5 class="card-title"><?= $event['sigla_evento'] ?> - <?= $event['nome_evento'] ?></h5>
+            <h5 class="card-title"><?= $event['sigla_evento'] == "" ? "" : $event['sigla_evento'] . " - " ?><?= $event['nome_evento'] ?></h5>
               <p class="card-text"><?= $event['descricao_evento'] ?></p>
               <div class="card-details">
                 <div>
