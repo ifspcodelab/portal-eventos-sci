@@ -54,6 +54,48 @@ class People
     }
   }  
 
+  // create
+  public static function createPerson(array $dataPerson)
+  {
+    $conn = new Database();
+    $insertPerson = $conn->executeQuery('INSERT INTO pessoa (nome_contato, email, celular, telefone) VALUES (:nome, :email, :celular, :telefone)', array(
+      ':nome'       => $dataPerson['nome_contato'],
+      ':email'      => $dataPerson['email'],
+      ':celular'    => $dataPerson['celular'],
+      ':telefone'   => $dataPerson['telefone']
+    ));
+
+    
+
+    return $insertPerson->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function getLastPerson(){
+    $conn = new Database();
+    $personId = $conn->executeQuery('SELECT cod_pessoa FROM `pessoa` ORDER BY cod_pessoa DESC LIMIT 1');
+
+    // foreach($personId as $fk_cod_pessoa){
+    //   $cod_pessoa = (int) $fk_cod_pessoa['cod_pessoa'];
+    // }
+
+    return $personId->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function createExternalPerson(array $personId)
+  {
+    $conn = new Database();
+
+    foreach($personId as $fk_cod_pessoa):
+      $insertExternalPerson = $conn->executeQuery('INSERT INTO pessoa_externa (fk_pessoa_cod_pessoa) VALUES (:fk_cod_pessoa)', array(
+        ':fk_cod_pessoa' => $fk_cod_pessoa['cod_pessoa']
+      ));
+    break;
+    endforeach;
+
+    return $insertExternalPerson->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+
   // update
 
 

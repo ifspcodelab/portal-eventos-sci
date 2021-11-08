@@ -79,7 +79,7 @@ class Event extends Controller
     $this->view('event/create', ['events' => $data]);
   }
 
-  public function createEvent()
+  public function createEvent($contActivities = null)
   {
     if (isset($_POST['inputEvent']))
     {
@@ -90,24 +90,52 @@ class Event extends Controller
         'periodo_evento'    => $_POST['selectPeriodoMes'].'/'.$_POST['inputPeriodoAno'],
         'img_evento'        => $_POST['fileDragData']
       );
-      $dataActivity = array(
-        'nome_atividade'            => $_POST['inputActivity'],
-        'data_inicio'               => $_POST['dataInicio'],
-        'data_fim'                  => $_POST['dataFim'],
-        'descricao_atividade'       => $_POST['descriptionActivity'],
-        'observacao_atividade'      => $_POST['observationActivity'],
-        'preco_inscricao'           => $_POST['inputAmount'],
-        'pontuacao_atividade'       => $_POST['PointsDataList'],
-        'area_atividade'            => $_POST['AreaDataList'],
-        'link_atividade'            => $_POST['inputLinkActivity'],
-        'link_inscricao_atividade'  => $_POST['inputLinkSubscription']
+
+      $arrayActivities = array();
+
+      for ($i = 1; $i <=  $contActivities; $i++) { 
+        $dataActivity = array(
+          'nome_atividade'            => $_POST['inputActivity'.$i],
+          'data_inicio'               => $_POST['dataInicio'.$i],
+          'data_fim'                  => $_POST['dataFim'.$i],
+          'descricao_atividade'       => $_POST['descriptionActivity'.$i],
+          'observacao_atividade'      => $_POST['observationActivity'.$i],
+          'preco_inscricao'           => $_POST['inputAmount'.$i],
+          'pontuacao_atividade'       => $_POST['PointsDataList'.$i],
+          'area_atividade'            => $_POST['AreaDataList'.$i],
+          'link_atividade'            => $_POST['inputLinkActivity'.$i],
+          'link_inscricao_atividade'  => $_POST['inputLinkSubscription'.$i]
+        );
+
+        array_push($arrayActivities, $dataActivity);
+
+      }
+
+      $dataPerson = array(
+        'nome_contato'  => $_POST['inputName'],
+        'email'         => $_POST['inputEmail'],
+        'celular'       => $_POST['inputCel'],
+        'telefone'      => $_POST['inputTel'],
+        'relacao_ifsp'  => $_POST['flexRadioDefault']
       );
 
       $Events = $this->model('Events');
       $dataEvents = $Events::createEvent((array)$dataEvent);
 
       $Activities = $this->model('Activities');
-      $dataActivities = $Activities::createActivity((array)$dataActivity);
+      $dataActivities = $Activities::createActivity((array)$arrayActivities);
+
+      $Involved = $this->model('People');
+      $dataInvolved = $Involved::createPerson((array)$dataPerson);
+
+      $codPerson = $Involved::getLastPerson();
+
+      if($dataPerson['relacao_ifsp'] == "external"){
+        $externalPerson = $Involved::createExternalPerson((array)$codPerson);
+      }
+      else{
+        
+      }
 
       $this->view('/event/index', ['events' => $dataEvents, 'banner' => true, 'banner_template' => 'commons/banner']);
     }

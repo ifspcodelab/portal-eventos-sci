@@ -52,6 +52,13 @@ textarea{
     display: none;
 }
 
+fieldset{
+    border: 1px solid var(--bs-gray-300);
+    border-radius: 0.625rem;
+    padding-top: 1rem;
+    margin: 1rem 0;
+}
+
 @media(max-width: 576px){
 /* form new event */
 .formNew{
