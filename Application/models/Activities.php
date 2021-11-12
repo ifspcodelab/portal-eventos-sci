@@ -74,9 +74,9 @@ class Activities
           ':linkInscricao'  => $activity['link_inscricao_atividade'],
           ':evento'         => (int) $event['cod_evento']
         ));
-        var_dump($insertActivities);
-        return $insertActivities->fetchAll(PDO::FETCH_ASSOC);
       }
+
+      return $insertActivities->fetchAll(PDO::FETCH_ASSOC);
     break;
     endforeach;
 

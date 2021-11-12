@@ -164,10 +164,10 @@ holder.ondragleave = function () {
 
 // ------------------------------------------------------------------------
 // Adicionar mais atividades
-const addButton = document.getElementById('addActivity');
+const addButton 	= document.getElementById('addActivity');
+const removeButton 	= document.getElementById('removeActivity');
 
 var contActivity = 1;
-
 
 const addActivity = function () {
 	var activitiesContainer = document.getElementById('activities');
@@ -177,8 +177,10 @@ const addActivity = function () {
 	window.history.replaceState(null, null, `/event/create/${contActivity}`);
 	form.action = `/event/createEvent/${contActivity}`;
 
-	const activity = document.createElement('fieldset')
+	const activity = document.createElement('fieldset');
+	activity.setAttribute('id', `activity${contActivity}`);
 	activity.name = 'activities';
+	
 	activity.innerHTML = `<div class="row g-2 mb-4">
 	<div class="col-md-6 px-3">
 		<!-- Nome -->
@@ -292,9 +294,34 @@ const addActivity = function () {
 	</div>
 	</div>`
 
-	activitiesContainer.appendChild(activity)
+	activitiesContainer.appendChild(activity);
+
+	minusButton();
 }
 addButton.addEventListener('click', addActivity);
+
+
+const removeActivity = function () {	
+	const activity = document.querySelector(`#activity${contActivity}`);
+	activity.parentNode.removeChild(activity);
+	contActivity--;
+	
+	window.history.replaceState(null, null, `/event/create/${contActivity}`);
+	form.action = `/event/createEvent/${contActivity}`;
+
+	minusButton();
+}
+removeButton.addEventListener('click', removeActivity);
+
+function minusButton(){
+	if(contActivity <= 1){
+		removeButton.classList.add('disabled');
+	}
+	else{
+		removeButton.classList.remove('disabled');
+	}
+}
+minusButton();
 
 function GetURLParameter() {
 	var sPageURL = window.location.href;
@@ -305,5 +332,3 @@ function GetURLParameter() {
 	else 
 	   return 0;
 }
-
-console.log(GetURLParameter())

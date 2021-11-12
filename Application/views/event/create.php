@@ -227,7 +227,7 @@
                     </div>
                     <div class="col px-3 input-group">
                         <span class="input-group-btn px-2">
-                            <button type="button" class="btn btn-sm btn-green btn-number" data-type="minus">
+                            <button id="removeActivity" type="button" class="btn btn-sm btn-green btn-number" data-type="minus">
                                 <span class="fas fa-minus"></span>
                             </button>
                         </span>
