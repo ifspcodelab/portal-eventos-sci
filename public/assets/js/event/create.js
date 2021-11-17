@@ -168,11 +168,27 @@ const addButton 	= document.getElementById('addActivity');
 const removeButton 	= document.getElementById('removeActivity');
 
 var contActivity = 1;
+var contInvolved = 1;
+
+const index = {
+	numeroAtividade: 1,
+	quantidadeEnvolvidos: 1
+}
+
+// var controle = []
+// console.log(controle)
+
+// controle.push(index)
+// console.log(controle)
+// controle.push(index)
+
+// console.log(controle[0])
 
 const addActivity = function () {
 	var activitiesContainer = document.getElementById('activities');
 	var form = document.getElementById('form');
 	contActivity++;
+	contInvolved++;
 
 	window.history.replaceState(null, null, `/event/create/${contActivity}`);
 	form.action = `/event/createEvent/${contActivity}`;
@@ -293,11 +309,82 @@ const addActivity = function () {
 				<input type="url" class="form-control pt-2 pb-2" name="inputLinkSubscription${contActivity}" id="inputLinkSubscription${contActivity}" placeholder="Informe o link para inscrição na atividade"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" >
 			</div>
 		</div>
-	</div>`
+	</div>
+	
+	<!-- Envolvido -->
+	<fieldset id="involvedActivity1">
+		<legend class="text-secondary">Envolvidos na atividade</legend>
+		<div id="people-${contActivity}">
+			<div class="row g-2">
+				<div class="col-md-6 px-3">
+					<!-- Nome -->
+					<div class="mb-2">
+						<label for="inputName-${contActivity}-${contInvolved}" class="col-md col-form-label">Nome</label>
+						<input type="text" class="form-control pt-2 pb-2" id="inputName-${contActivity}-${contInvolved}" name="inputName-${contActivity}-${contInvolved}" placeholder="Informe o nome da pessoa envolvida na atividade"  >
+						<span class="error"></span>
+					</div>
+					<div class="row row-form">
+						<!-- Telefone -->
+						<div class="mb-2 col">
+							<label for="inputTel-${contActivity}-${contInvolved}" class="col-md col-form-label">Telefone</label>
+							<input type="tel" class="form-control pt-2 pb-2" id="inputTel-${contActivity}-${contInvolved}" name="inputTel-${contActivity}-${contInvolved}" placeholder="(99) 9999-9999" maxlength="14" data-js="phone">
+						</div>
+						<!-- Celular -->
+						<div class="mb-2 col">
+							<label for="inputCel-${contActivity}-${contInvolved}" class="col-md col-form-label">Celular</label>
+							<input type="tel" class=" form-control pt-2 pb-2" id="inputCel-${contActivity}-${contInvolved}" name="inputCel-${contActivity}-${contInvolved}" placeholder="(99) 99999-9999" autocomplete="off" maxlength="15" data-js="phone">
+							<span class="error"></span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 px-3">
+					<!-- Email do envolvido -->
+					<div class="mb-2">
+						<label for="inputEmail-${contActivity}-${contInvolved}" class="col-md col-form-label">E-mail</label>
+						<input type="email" class="form-control pt-2 pb-2" name="inputEmail-${contActivity}-${contInvolved}" id="inputEmail-${contActivity}-${contInvolved}" placeholder="Informe um e-mail para contato"  ></input>
+						<span class="error"></span>
+					</div>
+					<!-- Externo ou Interno -->
+					<div class="mb-2">
+						<label for="inputCheckbox" class="col-md col-form-label mb-2">Relação com o IFSP</label>
+						<div class="row g-2 mx-2 pt-2 pb-2">
+							<div class="col form-check" id="inputCheckbox">
+								<input class="form-check-input" type="radio" onclick="involvedType(${contActivity}, ${contInvolved})" name="flexRadioDefault-${contActivity}-${contInvolved}" id="inputCheckboxIn-${contActivity}-${contInvolved}" value="internal">
+								<label class="form-check-label" for="inputCheckboxIn1">Interna</label>
+							</div>
+							<div class="col form-check" id="inputCheckbox">
+								<input class="form-check-input" type="radio" onclick="involvedType(${contActivity}, ${contInvolved})" name="flexRadioDefault-${contActivity}-${contInvolved}" id="inputCheckboxEx-${contActivity}-${contInvolved}" value="external">
+								<label class="form-check-label" for="inputCheckboxEx1">Externa</label>
+							</div>
+						</div> 
+					</div>
+				</div>
+			</div>
+			<div class="row g-2 mb-4" id="typeContainer-${contActivity}-${contInvolved}"></div>
+		</div>
+		<!-- Add More Button - Envolvido -->
+		<div class="row g-2 mb-4 d-flex flex-column">
+			<div class="col px-3">
+				<label for="inputAddMorePearson" class="col-md col-form-label">Deseja adicionar ou remover uma pessoa envolvida?</label>
+			</div>
+			<div class="col px-3 input-group">
+				<span class="input-group-btn px-2">
+					<button id="removePerson-${contActivity}-${contInvolved}" onclick="removeInvolved(${contActivity})" type="button" class="btn btn-sm btn-green btn-number" data-type="minus" >
+						<span class="fas fa-minus"></span>
+					</button>
+				</span>
+				<span class="input-group-btn">
+					<button id="addPerson-${contActivity}-${contInvolved}" onclick="addInvolved(${contActivity})" type="button" class="btn btn-sm btn-green btn-number" data-type="plus" >
+						<span class="fas fa-plus"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+	</fieldset>`
 
 	activitiesContainer.appendChild(activity);
 
-	minusButton();
+	minusButton('activity');
 }
 addButton.addEventListener('click', addActivity);
 
@@ -310,19 +397,10 @@ const removeActivity = function () {
 	window.history.replaceState(null, null, `/event/create/${contActivity}`);
 	form.action = `/event/createEvent/${contActivity}`;
 
-	minusButton();
+	minusButton('activity');
 }
 removeButton.addEventListener('click', removeActivity);
 
-function minusButton(){
-	if(contActivity <= 1){
-		removeButton.classList.add('disabled');
-	}
-	else{
-		removeButton.classList.remove('disabled');
-	}
-}
-minusButton();
 
 function GetURLParameter() {
 	var sPageURL = window.location.href;
@@ -336,29 +414,20 @@ function GetURLParameter() {
 
 // ------------------------------------------------------------------------
 // Envolvidos
-const personType = document.getElementsByName('flexRadioDefault');
-const internalPerson = document.getElementById('inputCheckboxIn');
-const externalPerson = document.getElementById('inputCheckboxEx');
+function involvedType(activity, position){
+	const personType = document.getElementsByName(`flexRadioDefault-${activity}-${position}`);
+	const involved = document.getElementById(`typeContainer-${activity}-${position}`);
 
-
-const oi = function(){
 	personType.forEach(element => {
 		if(element.checked){
-			// const typeContainer = document.getElementById('typeContainer');
-			const involved = document.getElementById('typeContainer');
-
-			// const involved = document.createElement('div');
-
-			// typeContainer.appendChild(involved);
-
 			if(element.value == 'external'){
 				involved.innerHTML = `
 				<div class="col-md-6 px-3">
 					<!-- Empresa -->
 					<div class="mb-2">
-						<label for="BusinessDataList" class="form-label col-form-label">Empresa</label>
-						<input class="form-control pt-2 pb-2" list="datalistOptionsBusiness" id="BusinessDataList" placeholder="Informe o nome da empresa">
-						<datalist id="datalistOptionsBusiness"  >
+						<label for="BusinessDataList-${contActivity}-${contInvolved}" class="form-label col-form-label">Empresa</label>
+						<input class="form-control pt-2 pb-2" list="datalistOptionsBusiness" id="BusinessDataList-${contActivity}-${contInvolved}" name="BusinessDataList-${contActivity}-${contInvolved}" placeholder="Informe o nome da empresa">
+						<datalist id="datalistOptionsBusiness-${contActivity}-${contInvolved}"  >
                         	<option value="JASP"></option>
                             <option value="SAP"></option>
                         </datalist>
@@ -368,15 +437,15 @@ const oi = function(){
                 <div class="col-md-6 px-3">
                 	<!-- Email da empresa -->
                     <div class="mb-2">
-                    	<label for="inputEmailCompany" class="col-md col-form-label">E-mail</label>
-                        <input type="email" class="form-control pt-2 pb-2" name="inputEmailCompany" id="inputEmailCompany" placeholder="Informe um e-mail para contato com a empresa"></input>
+                    	<label for="inputEmailCompany-${contActivity}-${contInvolved}" class="col-md col-form-label">E-mail</label>
+                        <input type="email" class="form-control pt-2 pb-2" name="inputEmailCompany-${contActivity}-${contInvolved}" id="inputEmailCompany-${contActivity}-${contInvolved}" placeholder="Informe um e-mail para contato com a empresa"></input>
                     </div>
                 </div>
                 <div class="col px-3">
                 	<!-- Site da empresa -->
                     <div class="mb-2">
-                    	<label for="inputLinkBusiness" class="col-md col-form-label">Site</label>
-                        <input type="url" class="form-control pt-2 pb-2" id="inputLinkBusiness" placeholder="Informe o link do site da empresa"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" >
+                    	<label for="inputLinkBusiness-${contActivity}-${contInvolved}" class="col-md col-form-label">Site</label>
+                        <input type="url" class="form-control pt-2 pb-2" id="inputLinkBusiness-${contActivity}-${contInvolved}" name="inputLinkBusiness-${contActivity}-${contInvolved}" placeholder="Informe o link do site da empresa"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" >
                     </div>  
                 </div>`
 			}
@@ -384,9 +453,9 @@ const oi = function(){
 				involved.innerHTML = `
 				<div class="col-md-6 px-3">
                     <div class="mb-2">
-                        <label for="AreaIfspDataList" class="form-label col-form-label">Área</label>
-                        <input class="form-control pt-2 pb-2" list="datalistAreaIfsp" name="AreaIfspDataList" id="AreaIfspDataList" placeholder="Informe a área de atuação no câmpus">
-                        <datalist id="datalistAreaIfsp"  >
+                        <label for="AreaIfspDataList-${contActivity}-${contInvolved}" class="form-label col-form-label">Área</label>
+                        <input class="form-control pt-2 pb-2" list="datalistAreaIfsp-${contActivity}-${contInvolved}" name="AreaIfspDataList-${contActivity}-${contInvolved}" id="AreaIfspDataList-${contActivity}-${contInvolved}" placeholder="Informe a área de atuação no câmpus">
+                        <datalist id="datalistAreaIfsp-${contActivity}-${contInvolved}"  >
                             <option value="Informática"></option>
                         	<option value="Turismo"></option>
                         </datalist>
@@ -395,15 +464,108 @@ const oi = function(){
             	</div>
 			    <div class="col-md-6 px-3">
                     <div class="mb-2">
-                    	<label for="inputCategory" class="col-md col-form-label">Categoria</label>
-                    	<input type="email" class="form-control pt-2 pb-2" name="inputCategory" id="inputCategory" placeholder="Informe a função do envolvido"></input>
+                    	<label for="inputCategory-${contActivity}-${contInvolved}" class="col-md col-form-label">Categoria</label>
+                    	<input type="email" class="form-control pt-2 pb-2" name="inputCategory-${contActivity}-${contInvolved}" id="inputCategory-${contActivity}-${contInvolved}" placeholder="Informe a função do envolvido"></input>
                 	</div>
 				</div>`
 			}
 		}
 	});
 }
-internalPerson.addEventListener('click', oi)
-externalPerson.addEventListener('click', oi)
 
-// console.log(personType)
+function addInvolved(activity) {
+	var involvedContainer = document.getElementById(`people-${activity}`);
+	// var form = document.getElementById('form');
+	contInvolved++;
+
+	// window.history.replaceState(null, null, `/event/create/${contActivity}`);
+	// form.action = `/event/createEvent/${contActivity}`;
+
+	const involved = document.createElement('div');
+	involved.setAttribute('id', `involved-${activity}-${contInvolved}`);
+	
+	involved.innerHTML = ` <hr class="m-4 bg-light">
+		<div class="row g-2">
+			<div class="col-md-6 px-3">
+				<!-- Nome -->
+				<div class="mb-2">
+					<label for="inputName-${activity}-${contInvolved}" class="col-md col-form-label">Nome</label>
+					<input type="text" class="form-control pt-2 pb-2" id="inputName-${activity}-${contInvolved}" name="inputName-${activity}-${contInvolved}" placeholder="Informe o nome da pessoa envolvida na atividade"  >
+					<span class="error"></span>
+				</div>
+				<div class="row row-form">
+					<!-- Telefone -->
+					<div class="mb-2 col">
+						<label for="inputTel-${activity}-${contInvolved}" class="col-md col-form-label">Telefone</label>
+						<input type="tel" class="form-control pt-2 pb-2" id="inputTel-${activity}-${contInvolved}" name="inputTel-${activity}-${contInvolved}" placeholder="(99) 9999-9999" maxlength="14" data-js="phone">
+					</div>
+					<!-- Celular -->
+					<div class="mb-2 col">
+						<label for="inputCel-${activity}-${contInvolved}" class="col-md col-form-label">Celular</label>
+						<input type="tel" class=" form-control pt-2 pb-2" id="inputCel-${activity}-${contInvolved}" name="inputCel-${activity}-${contInvolved}" placeholder="(99) 99999-9999" autocomplete="off" maxlength="15" data-js="phone">
+						<span class="error"></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 px-3">
+				<!-- Email do envolvido -->
+				<div class="mb-2">
+					<label for="inputEmail-${activity}-${contInvolved}" class="col-md col-form-label">E-mail</label>
+					<input type="email" class="form-control pt-2 pb-2" name="inputEmail-${activity}-${contInvolved}" id="inputEmail-${activity}-${contInvolved}" placeholder="Informe um e-mail para contato"  ></input>
+					<span class="error"></span>
+				</div>
+				<!-- Externo ou Interno -->
+				<div class="mb-2">
+					<label for="inputCheckbox" class="col-md col-form-label mb-2">Relação com o IFSP</label>
+					<div class="row g-2 mx-2 pt-2 pb-2">
+						<div class="col form-check" id="inputCheckbox">
+							<input class="form-check-input" type="radio" onclick="involvedType(${activity}, ${contInvolved})" name="flexRadioDefault-${activity}-${contInvolved}" id="inputCheckboxIn-${activity}-${contInvolved}" value="internal">
+							<label class="form-check-label" for="inputCheckboxIn${contInvolved}">Interna</label>
+						</div>
+						<div class="col form-check" id="inputCheckbox">
+							<input class="form-check-input" type="radio" onclick="involvedType(${activity}, ${contInvolved})" name="flexRadioDefault-${activity}-${contInvolved}" id="inputCheckboxEx-${activity}-${contInvolved}" value="external">
+							<label class="form-check-label" for="inputCheckboxEx${contInvolved}">Externa</label>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</div>
+		<div class="row g-2 mb-4" id="typeContainer-${activity}-${contInvolved}"></div>`
+
+	involvedContainer.appendChild(involved);
+
+	minusButton('involved');
+}
+
+
+function removeInvolved(activity) {
+	const involved = document.querySelector(`#involved-${activity}-${contInvolved}`);
+	involved.parentNode.removeChild(involved);
+	contInvolved--;
+	
+	// window.history.replaceState(null, null, `/event/create/${contActivity}`);
+	// form.action = `/event/createEvent/${contActivity}`;
+
+	minusButton('involved');
+}
+
+function minusButton(type){
+	if(type == 'activity'){
+		if(contActivity <= 1){
+			removeButton.classList.add('disabled');
+		}
+		else{
+			removeButton.classList.remove('disabled');
+		}
+	}
+	else if(type == 'involved'){
+		if(contInvolved <= 1){
+			removeInvolvedButton.classList.add('disabled');
+		}
+		else{
+			removeInvolvedButton.classList.remove('disabled');
+		}
+	}
+}
+minusButton('activity');
+minusButton('involved');
