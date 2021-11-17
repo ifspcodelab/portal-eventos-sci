@@ -104,7 +104,7 @@
                 <div id="activities">
                     <h2 class="text-secondary"> <strong> Atividade </strong> </h2>
                     <hr class="mt-0 mb-4 bg-light">                   
-                    <fieldset id="activity" name="activities">
+                    <fieldset id="activity" name="activities" class="activity-group">
                         <div class="row g-2 mb-4">
                             <div class="col-md-6 px-3">
                                 <!-- Nome -->
@@ -218,12 +218,89 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Envolvido -->
+                        <fieldset>
+                            <legend class="text-secondary">Envolvidos na atividade</legend>
+                            <div class="row g-2">
+                                <div class="col-md-6 px-3">
+                                    <!-- Nome -->
+                                    <div class="mb-2">
+                                        <label for="inputName" class="col-md col-form-label">Nome</label>
+                                        <input type="text" class="form-control pt-2 pb-2" id="inputName" name="inputName" placeholder="Informe o nome da pessoa envolvida na atividade"  >
+                                        <span class="error"></span>
+                                    </div>
+                                    <div class="row row-form">
+                                        <!-- Telefone -->
+                                        <div class="mb-2 col">
+                                            <label for="inputTel" class="col-md col-form-label">Telefone</label>
+                                            <input type="tel" class="form-control pt-2 pb-2" id="inputTel" name="inputTel" placeholder="(99) 9999-9999" maxlength="14" data-js="phone">
+                                        </div>
+                                        <!-- Celular -->
+                                        <div class="mb-2 col">
+                                            <label for="inputCel" class="col-md col-form-label">Celular</label>
+                                            <input type="tel" class=" form-control pt-2 pb-2" id="inputCel" name="inputCel" placeholder="(99) 99999-9999" autocomplete="off" maxlength="15"
+                                            data-js="phone">
+                                            <span class="error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3">
+                                    <!-- Email do envolvido -->
+                                    <div class="mb-2">
+                                        <label for="inputEmail" class="col-md col-form-label">E-mail</label>
+                                        <input type="email" class="form-control pt-2 pb-2" name="inputEmail" id="inputEmail" placeholder="Informe um e-mail para contato"  ></input>
+                                        <span class="error"></span>
+                                    </div>
+                                    <!-- Externo ou Interno -->
+                                    <div class="mb-2">
+                                        <label for="inputCheckbox" class="col-md col-form-label mb-2">Relação com o IFSP</label>
+                                        <div class="row g-2 mx-2 pt-2 pb-2">
+                                            <div class="col form-check" id="inputCheckbox">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="inputCheckboxIn" value="internal">
+                                                <label class="form-check-label" for="inputCheckboxIn">
+                                                    Interna
+                                                </label>
+                                            </div>
+                                            <div class="col form-check" id="inputCheckbox">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="inputCheckboxEx" value="external">
+                                                <label class="form-check-label" for="inputCheckboxEx">
+                                                    Externa
+                                                </label>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-4" id="typeContainer">
+                                     
+                            </div>
+                
+                            <!-- Add More Button - Envolvido -->
+                            <div class="row g-2 mb-4 d-flex flex-column">
+                                <div class="col px-3">
+                                    <label for="inputAddMorePearson" class="col-md col-form-label">Deseja adicionar ou remover uma pessoa envolvida?</label>
+                                </div>
+                                <div class="col px-3 input-group">
+                                <span class="input-group-btn px-2">
+                                    <button type="button" class="btn btn-sm btn-green btn-number" data-type="minus" >
+                                        <span class="fas fa-minus"></span>
+                                    </button>
+                                </span>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-sm btn-green btn-number" data-type="plus" >
+                                        <span class="fas fa-plus"></span>
+                                    </button>
+                                </span>
+                                </div>
+                            </div>
+                        </fieldset>
                     </fieldset>
                 </div>
                 <!-- Add More Button - Atividade -->
                 <div class="row g-2 mb-4 d-flex flex-column">
                     <div class="col px-3">
-                        <label for="inputAddMoreActivity" class="col-md col-form-label">Deseja adicionar mais uma atividade?</label>
+                        <label for="inputAddMoreActivity" class="col-md col-form-label">Deseja adicionar ou remover uma atividade?</label>
                     </div>
                     <div class="col px-3 input-group">
                         <span class="input-group-btn px-2">
@@ -237,109 +314,6 @@
                             </button>
                         </span>
                     </div>
-                </div>
-            </div>
-
-            <!-- Envolvido -->
-            <h2 class="text-secondary"> <strong> Envolvido </strong> </h2>
-            <hr class="mt-0 mb-4 bg-light">
-            <div class="row g-2">
-                <div class="col-md-6 px-3">
-                    <!-- Nome -->
-                    <div class="mb-2">
-                        <label for="inputName" class="col-md col-form-label">Nome</label>
-                        <input type="text" class="form-control pt-2 pb-2" id="inputName" name="inputName" placeholder="Informe o nome da pessoa envolvida na atividade"  >
-                        <span class="error"></span>
-                    </div>
-                    <div class="row row-form">
-                        <!-- Telefone -->
-                        <div class="mb-2 col">
-                            <label for="inputTel" class="col-md col-form-label">Telefone</label>
-                            <input type="tel" class="form-control pt-2 pb-2" id="inputTel" name="inputTel" placeholder="(99) 9999-9999" maxlength="14" data-js="phone">
-                        </div>
-                        <!-- Celular -->
-                        <div class="mb-2 col">
-                            <label for="inputCel" class="col-md col-form-label">Celular</label>
-                            <input type="tel" class=" form-control pt-2 pb-2" id="inputCel" name="inputCel" placeholder="(99) 99999-9999" autocomplete="off" maxlength="15"
-                            data-js="phone">
-                            <span class="error"></span>
-                        </div>
-                    </div>
-
-                    <!-- Empresa -->
-                    <div class="mb-2">
-                        <label for="BusinessDataList" class="form-label col-form-label">Empresa</label>
-                        <input class="form-control pt-2 pb-2" list="datalistOptionsBusiness" id="BusinessDataList" placeholder="Informe o nome da empresa">
-                        <datalist id="datalistOptionsBusiness"  >
-                            <option value="JASP"></option>
-                            <option value="SAP"></option>
-                        </datalist>
-                        <span class="error"></span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 px-3">
-                    <!-- Email do envolvido -->
-                    <div class="mb-2">
-                        <label for="inputEmail" class="col-md col-form-label">E-mail</label>
-                        <input type="email" class="form-control pt-2 pb-2" name="inputEmail" id="inputEmail" placeholder="Informe um e-mail para contato"  ></input>
-                        <span class="error"></span>
-                    </div>
-
-                    <!-- Externo ou Interno -->
-                    <div class="mb-2">
-                        <label for="inputCheckbox" class="col-md col-form-label mb-2">Relação com o IFSP</label>
-                        <div class="row g-2 mx-2 pt-2 pb-2">
-                            <div class="col form-check" id="inputCheckbox">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="inputCheckboxIn" value="internal">
-                                <label class="form-check-label" for="inputCheckboxIn">
-                                    Interna
-                                </label>
-                            </div>
-                            <div class="col form-check" id="inputCheckbox">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="inputCheckboxEx" value="external">
-                                <label class="form-check-label" for="inputCheckboxEx">
-                                    Externa
-                                </label>
-                            </div>
-                        </div> 
-                    </div>
-                    <!-- Email da empresa -->
-                    <div class="mb-2">
-                        <label for="inputEmailCompany" class="col-md col-form-label">E-mail</label>
-                        <input type="email" class="form-control pt-2 pb-2" name="inputEmailCompany" id="inputEmailCompany" placeholder="Informe um e-mail para contato com a empresa"></input>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="row g-2 mb-4">
-                <div class="col px-3">
-                    <!-- Site da empresa -->
-                    <div class="mb-2">
-                        <label for="inputLinkBusiness" class="col-md col-form-label">Site</label>
-                        <input type="url" class="form-control pt-2 pb-2" id="inputLinkBusiness" placeholder="Informe o link do site da empresa"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" >
-                    </div>  
-
-                </div>      
-            </div>
-
-            <!-- Add More Button - Envolvido -->
-            <div class="row g-2 mb-4 d-flex flex-column">
-                <div class="col px-3">
-                    <label for="inputAddMorePearson" class="col-md col-form-label">Deseja adicionar mais uma pessoa envolvida?</label>
-                </div>
-                <div class="col px-3 input-group">
-                <span class="input-group-btn px-2">
-                    <button type="button" class="btn btn-sm btn-green btn-number" data-type="minus" >
-                        <span class="fas fa-minus"></span>
-                    </button>
-                </span>
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-sm btn-green btn-number" data-type="plus" >
-                        <span class="fas fa-plus"></span>
-                    </button>
-                </span>
                 </div>
             </div>
 
