@@ -4,23 +4,7 @@
 <main class="flex-shrink-0">
     <div class="container my-5 card p-5 formNew">
         <h2 class="text-green"> <strong> Novo Evento </strong> </h2>
-        <hr class="mt-0 mb-4 bg-light">        
-        <?php
-            // $url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
-            // if ($url != ''){
-            //     $urls  = explode('/', $url);
-            //     foreach($urls as $activities){
-            //     $activities = $activities;
-            //     }
-            // }
-            
-            // if(is_numeric($activities)){
-            //     $contActivities = $activities;
-            // }
-            // else{
-            //     $contActivities = 1;
-            // }
-        ?>
+        <hr class="mt-0 mb-4 bg-light"> 
         <form id="form" class="needs-validation " action="/event/createEvent" method="POST">
             <!-- Novo evento -->
             <div class="row g-2 mb-1">
@@ -44,6 +28,11 @@
                         <!-- Descrição -->
                         <label for="inputDescription" class="col-md col-form-label">Descrição</label>
                         <textarea type="text" class="form-control pt-2 pb-5" name="inputDescription" id="inputDescription" placeholder="Descreva o evento resumidamente"  ></textarea>
+                        <span class="error"></span>
+                    </div>
+                    <div class="mb-2">
+                        <label for="inputLinkEvent" class="col-md col-form-label">Link do evento</label>
+                        <input type="url" class="form-control pt-2 pb-2" name="inputLinkEvent" id="inputLinkEvent" placeholder="Informe o link do evento"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30"  >
                         <span class="error"></span>
                     </div>
                 </div>
@@ -95,6 +84,10 @@
                             <input id="fileDragType" name="fileDragType">
                             <input id="fileDragData" name="fileDragData">
                         </div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="inputLinkSubscriptionEvent" class="col-md col-form-label">Link de inscrição</label>
+                        <input type="url" class="form-control pt-2 pb-2" name="inputLinkSubscriptionEvent" id="inputLinkSubscriptionEvent" placeholder="Informe o link para inscrição no evento"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" >
                     </div>
                 </div>
             </div>
@@ -276,6 +269,9 @@
                                     </div>
                                     <div class="row g-2 mb-4" id="typeContainer-1-1"></div>
                                 </div>
+                                <div>
+                                    <input type="hidden" id="qtdInvolved-1" name="qtdInvolved-1" value="1">
+                                </div>
                             </div>
                             <!-- Add More Button - Envolvido -->
                             <div class="row g-2 mb-4 d-flex flex-column">
@@ -283,8 +279,8 @@
                                     <label for="inputAddMorePearson" class="col-md col-form-label">Deseja adicionar ou remover uma pessoa envolvida?</label>
                                 </div>
                                 <div class="col px-3 input-group">
-                                <span class="input-group-btn px-2">
-                                    <button id="removePerson-1" onclick="removeInvolved(1)" type="button" class="btn btn-sm btn-green btn-number" data-type="minus" >
+                                <span id="removePerson-1" class="input-group-btn px-2">
+                                    <button type="button" class="btn btn-sm btn-green btn-number" data-type="minus" >
                                         <span class="fas fa-minus"></span>
                                     </button>
                                 </span>

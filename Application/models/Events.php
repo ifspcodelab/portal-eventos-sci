@@ -79,12 +79,14 @@ class Events
   public static function createEvent(array $dataEvent)
   {
     $conn = new Database();
-    $insertEvent = $conn->executeQuery('INSERT INTO evento (nome_evento, sigla_evento, periodo_evento, descricao_evento, img_evento) VALUES (:nome, :sigla, :periodo, :descricao, :banner)', array(
-      ':nome'       => $dataEvent['nome_evento'],
-      ':sigla'      => $dataEvent['sigla_evento'],
-      ':periodo'    => $dataEvent['periodo_evento'],
-      ':descricao'  => $dataEvent['descricao_evento'],
-      ':banner'     => $dataEvent['img_evento']
+    $insertEvent = $conn->executeQuery('INSERT INTO evento (nome_evento, sigla_evento, periodo_evento, descricao_evento, img_evento, link_evento, link_inscricao_evento) VALUES (:nome, :sigla, :periodo, :descricao, :banner, :link_evento, :link_inscricao_evento)', array(
+      ':nome'                   => $dataEvent['nome_evento'],
+      ':sigla'                  => $dataEvent['sigla_evento'],
+      ':periodo'                => $dataEvent['periodo_evento'],
+      ':descricao'              => $dataEvent['descricao_evento'],
+      ':banner'                 => $dataEvent['img_evento'],
+      ':link_evento'            => $dataEvent['link_evento'],
+      ':link_inscricao_evento'  => $dataEvent['link_incricao_evento']
     ));
 
     return $insertEvent->fetchAll(PDO::FETCH_ASSOC);
@@ -92,9 +94,41 @@ class Events
   
 
   // update
+  public static function updateEvent(int $eventId, array $dataEvent)
+  {
+    $conn = new Database();
+    
+    $updateEvent = $conn->executeQuery('UPDATE evento SET nome_evento = :nome, sigla_evento = :sigla, periodo_evento = :periodo, descricao_evento = :descricao, img_evento = :banner, link_evento = :link_evento, link_inscricao_evento = :link_inscricao_evento WHERE cod_evento = :id', array(
+      ':id'                     => $eventId,
+      ':nome'                   => $dataEvent['nome_evento'],
+      ':sigla'                  => $dataEvent['sigla_evento'],
+      ':periodo'                => $dataEvent['periodo_evento'],
+      ':descricao'              => $dataEvent['descricao_evento'],
+      ':banner'                 => $dataEvent['img_evento'],
+      ':link_evento'            => $dataEvent['link_evento'],
+      ':link_inscricao_evento'  => $dataEvent['link_incricao_evento']
+    ));
+
+    return $updateEvent->fetchAll(PDO::FETCH_ASSOC);
+
+    // return $updateEvent->fetchAll(PDO::FETCH_ASSOC);
+  }
 
 
   //delete
+  public static function deleteEvent(array $event)
+  {
+    $conn = new Database();
+
+    foreach ($event as $id):
+      $deleteEvent = $conn->executeQuery('DELETE FROM `evento` WHERE `evento`.`cod_evento` = :id', array(
+        ':id' => $id['cod_evento']
+      ));
+    break;
+    endforeach;
+
+    return $deleteEvent->fetchAll(PDO::FETCH_ASSOC);
+  }
 
 
   // exemplo: findByDate

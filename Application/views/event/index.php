@@ -49,7 +49,10 @@
                   <i class="icon-Calendar"></i>
                   <p><?= $event['periodo_evento'] ?></p>
                 </div>
-                <a class="btn btn-red" href="../../event/show/<?= $event['cod_evento'] ?>">Detalhes</a>
+                <div>
+                  <a class="btn btn-red me-3" href="../../event/edit/<?= $event['cod_evento'] ?>">Editar</a>
+                  <a class="btn btn-red" href="../../event/show/<?= $event['cod_evento'] ?>">Detalhes</a>
+                </div>
               </div>
             </div>
           </div>

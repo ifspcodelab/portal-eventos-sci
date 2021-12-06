@@ -202,7 +202,6 @@ const addActivity = function () {
 
 	var qtd = document.querySelectorAll(`.envolvidos.atividade-${contActivity}`)
 	var auxInvolved = qtd.length + 1;
-	console.log('alo ' + auxInvolved)
 	
 	activity.innerHTML = ` <hr class="mt-4 mb-4 bg-light">
 	<div class="row g-2 mb-4">
@@ -357,18 +356,21 @@ const addActivity = function () {
 							<div class="row g-2 mx-2 pt-2 pb-2">
 								<div class="col form-check" id="inputCheckbox">
 									<input class="form-check-input" type="radio" onclick="involvedType(${contActivity}, ${auxInvolved})" name="flexRadioDefault-${contActivity}-${auxInvolved}" id="inputCheckboxIn-${contActivity}-${auxInvolved}" value="internal">
-									<label class="form-check-label" for="inputCheckboxIn1">Interna</label>
+									<label class="form-check-label" for="inputCheckboxIn-${contActivity}-${auxInvolved}">Interna</label>
 								</div>
 								<div class="col form-check" id="inputCheckbox">
 									<input class="form-check-input" type="radio" onclick="involvedType(${contActivity}, ${auxInvolved})" name="flexRadioDefault-${contActivity}-${auxInvolved}" id="inputCheckboxEx-${contActivity}-${auxInvolved}" value="external">
-									<label class="form-check-label" for="inputCheckboxEx1">Externa</label>
+									<label class="form-check-label" for="inputCheckboxEx-${contActivity}-${auxInvolved}">Externa</label>
 								</div>
 							</div> 
 						</div>
 					</div>
 				</div>
+				<div class="row g-2 mb-4" id="typeContainer-${contActivity}-${auxInvolved}"></div>
 			</div>
-			<div class="row g-2 mb-4" id="typeContainer-${contActivity}-${auxInvolved}"></div>
+			<div>
+				<input type="hidden" id="qtdInvolved-${contActivity}" name="qtdInvolved-${contActivity}" value="1">
+			</div>
 		</div>
 		<!-- Add More Button - Envolvido -->
 		<div class="row g-2 mb-4 d-flex flex-column">
@@ -376,9 +378,9 @@ const addActivity = function () {
 				<label for="inputAddMorePearson" class="col-md col-form-label">Deseja adicionar ou remover uma pessoa envolvida?</label>
 			</div>
 			<div class="col px-3 input-group">
-				<span class="input-group-btn px-2">
-				<button id="removePerson-${contActivity}" type="button" class="btn btn-sm btn-green btn-number" data-type="minus" >
-				<span class="fas fa-minus"></span>
+				<span id="removePerson-${contActivity}" class="input-group-btn px-2">
+					<button  type="button" class="btn btn-sm btn-green btn-number" data-type="minus" >
+						<span class="fas fa-minus"></span>
 					</button>
 				</span>
 				<span class="input-group-btn">
@@ -431,9 +433,9 @@ function involvedType(activity, position){
 				<div class="col-md-6 px-3">
 					<!-- Empresa -->
 					<div class="mb-2">
-						<label for="BusinessDataList-${contActivity}-${contInvolved}" class="form-label col-form-label">Empresa</label>
-						<input class="form-control pt-2 pb-2" list="datalistOptionsBusiness" id="BusinessDataList-${contActivity}-${contInvolved}" name="BusinessDataList-${contActivity}-${contInvolved}" placeholder="Informe o nome da empresa">
-						<datalist id="datalistOptionsBusiness-${contActivity}-${contInvolved}"  >
+						<label for="BusinessDataList-${contActivity}-${position}" class="form-label col-form-label">Empresa</label>
+						<input class="form-control pt-2 pb-2" list="datalistOptionsBusiness" id="BusinessDataList-${contActivity}-${position}" name="BusinessDataList-${contActivity}-${position}" placeholder="Informe o nome da empresa">
+						<datalist id="datalistOptionsBusiness-${contActivity}-${position}"  >
                         	<option value="JASP"></option>
                             <option value="SAP"></option>
                         </datalist>
@@ -443,15 +445,22 @@ function involvedType(activity, position){
                 <div class="col-md-6 px-3">
                 	<!-- Email da empresa -->
                     <div class="mb-2">
-                    	<label for="inputEmailCompany-${contActivity}-${contInvolved}" class="col-md col-form-label">E-mail</label>
-                        <input type="email" class="form-control pt-2 pb-2" name="inputEmailCompany-${contActivity}-${contInvolved}" id="inputEmailCompany-${contActivity}-${contInvolved}" placeholder="Informe um e-mail para contato com a empresa"></input>
+                    	<label for="inputEmailCompany-${contActivity}-${position}" class="col-md col-form-label">E-mail</label>
+                        <input type="email" class="form-control pt-2 pb-2" name="inputEmailCompany-${contActivity}-${position}" id="inputEmailCompany-${contActivity}-${position}" placeholder="Informe um e-mail para contato com a empresa"></input>
                     </div>
                 </div>
-                <div class="col px-3">
+                <div class="col-md-6 px-3">
+                	<!-- Área do contato -->
+                    <div class="mb-2">
+                    	<label for="inputAreaEmpresa-${contActivity}-${position}" class="col-md col-form-label">Área do contato</label>
+                        <input type="text" class="form-control pt-2 pb-2" id="inputAreaEmpresa-${contActivity}-${position}" name="inputAreaEmpresa-${contActivity}-${position}" placeholder="Informe de atuação do contato" >
+                    </div>  
+                </div>
+                <div class="col-md-6 px-3">
                 	<!-- Site da empresa -->
                     <div class="mb-2">
-                    	<label for="inputLinkBusiness-${contActivity}-${contInvolved}" class="col-md col-form-label">Site</label>
-                        <input type="url" class="form-control pt-2 pb-2" id="inputLinkBusiness-${contActivity}-${contInvolved}" name="inputLinkBusiness-${contActivity}-${contInvolved}" placeholder="Informe o link do site da empresa"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" >
+                    	<label for="inputLinkBusiness-${contActivity}-${position}" class="col-md col-form-label">Site</label>
+                        <input type="url" class="form-control pt-2 pb-2" id="inputLinkBusiness-${contActivity}-${position}" name="inputLinkBusiness-${contActivity}-${position}" placeholder="Informe o link do site da empresa"  onfocus="(this.type='url')" onblur="(this.type='text')" pattern="https://.*" size="30" >
                     </div>  
                 </div>`
 			}
@@ -459,19 +468,19 @@ function involvedType(activity, position){
 				involved.innerHTML = `
 				<div class="col-md-6 px-3">
                     <div class="mb-2">
-                        <label for="AreaIfspDataList-${contActivity}-${contInvolved}" class="form-label col-form-label">Área</label>
-                        <input class="form-control pt-2 pb-2" list="datalistAreaIfsp-${contActivity}-${contInvolved}" name="AreaIfspDataList-${contActivity}-${contInvolved}" id="AreaIfspDataList-${contActivity}-${contInvolved}" placeholder="Informe a área de atuação no câmpus">
-                        <datalist id="datalistAreaIfsp-${contActivity}-${contInvolved}"  >
-                            <option value="Informática"></option>
-                        	<option value="Turismo"></option>
+                        <label for="AreaIfspDataList-${contActivity}-${position}" class="form-label col-form-label">Área</label>
+                        <input autocomplete="off" class="form-control pt-2 pb-2" list="datalistAreaIfsp-${contActivity}-${position}" name="AreaIfspDataList-${contActivity}-${position}" id="AreaIfspDataList-${contActivity}-${position}" placeholder="Informe a área de atuação no câmpus">
+                        <datalist id="datalistAreaIfsp-${contActivity}-${position}"  >
+                            <option value="Subárea de Informática"></option>
+                        	<option value="Subárea de Turismo"></option>
                         </datalist>
                     	<span class="error"></span>
                 	</div>
             	</div>
 			    <div class="col-md-6 px-3">
                     <div class="mb-2">
-                    	<label for="inputCategory-${contActivity}-${contInvolved}" class="col-md col-form-label">Categoria</label>
-                    	<input type="email" class="form-control pt-2 pb-2" name="inputCategory-${contActivity}-${contInvolved}" id="inputCategory-${contActivity}-${contInvolved}" placeholder="Informe a função do envolvido"></input>
+                    	<label for="inputCategory-${contActivity}-${position}" class="col-md col-form-label">Categoria</label>
+                    	<input type="text" class="form-control pt-2 pb-2" name="inputCategory-${contActivity}-${position}" id="inputCategory-${contActivity}-${position}" placeholder="Informe a função do envolvido"></input>
                 	</div>
 				</div>`
 			}
@@ -481,22 +490,21 @@ function involvedType(activity, position){
 
 function addInvolved(activity) {
 	var involvedContainer = document.getElementById(`people-${activity}`);
-	// var form = document.getElementById('form');
+	
 	contInvolved++;
-
-	// window.history.replaceState(null, null, `/event/create/${contActivity}`);
-	// form.action = `/event/createEvent/${contActivity}`;
-
-	const involved = document.createElement('div');
-	involved.setAttribute('id', `involved-${activity}-${contInvolved}`);
-	involved.classList.add('envolvidos');
-	involved.classList.add(`atividade-${activity}`);
-
-	involvedContainer.appendChild(involved);
 
 	var qtd = document.querySelectorAll(`.envolvidos.atividade-${activity}`)
 	var auxInvolved = qtd.length;
-	console.log(qtd.length)
+	
+	const involved = document.createElement('div');
+	involved.setAttribute('id', `involved-${activity}-${auxInvolved + 1}`);
+	involved.classList.add('envolvidos');
+	involved.classList.add(`atividade-${activity}`);
+	
+	involvedContainer.appendChild(involved);
+	
+	qtd = document.querySelectorAll(`.envolvidos.atividade-${activity}`)
+	auxInvolved = qtd.length;
 	
 	involved.innerHTML = `<hr class="m-4 bg-light">
 		<div class="row g-2">
@@ -534,11 +542,11 @@ function addInvolved(activity) {
 					<div class="row g-2 mx-2 pt-2 pb-2">
 						<div class="col form-check" id="inputCheckbox">
 							<input class="form-check-input" type="radio" onclick="involvedType(${activity}, ${auxInvolved})" name="flexRadioDefault-${activity}-${auxInvolved}" id="inputCheckboxIn-${activity}-${auxInvolved}" value="internal">
-							<label class="form-check-label" for="inputCheckboxIn${auxInvolved}">Interna</label>
+							<label class="form-check-label" for="inputCheckboxIn-${contActivity}-${auxInvolved}">Interna</label>
 						</div>
 						<div class="col form-check" id="inputCheckbox">
 							<input class="form-check-input" type="radio" onclick="involvedType(${activity}, ${auxInvolved})" name="flexRadioDefault-${activity}-${auxInvolved}" id="inputCheckboxEx-${activity}-${auxInvolved}" value="external">
-							<label class="form-check-label" for="inputCheckboxEx${auxInvolved}">Externa</label>
+							<label class="form-check-label" for="inputCheckboxEx-${contActivity}-${auxInvolved}">Externa</label>
 						</div>
 					</div> 
 				</div>
@@ -546,35 +554,41 @@ function addInvolved(activity) {
 		</div>
 		<div class="row g-2 mb-4" id="typeContainer-${activity}-${auxInvolved}"></div>`
 
+	var qtdInvolved = document.getElementById(`qtdInvolved-${activity}`);
+	qtdInvolved.value = auxInvolved;
+
 	var removeInvolvedButton = document.getElementById(`removePerson-${activity}`)
-	console.log(activity)
+	
+	removeInvolvedButton.innerHTML = `
+	<button  type="button" onclick="removeInvolved(${activity}, ${auxInvolved})" class="btn btn-sm btn-green btn-number" data-type="minus" >
+	<span class="fas fa-minus"></span>
+	</button>
+	`
 
-	removeInvolvedButton.addEventListener('click', (activity) => {
-		console.log(auxInvolved)
-		console.log(activity)
-		console.log(activity.pointerId)
-		const involved = document.querySelector(`#involved-${activity.pointerId}-${auxInvolved}`);
-		involved.parentNode.removeChild(involved);
-	})
-	// removeInvolvedButton.onclick = removeInvolved(activity, auxInvolved)
-
-	// minusButton('involved');
+	minusButton('involved', auxInvolved);
 }
 
 
 function removeInvolved(activity, auxInvolved) {
 	const involved = document.querySelector(`#involved-${activity}-${auxInvolved}`);
-	console.log(involved)
 	involved.parentNode.removeChild(involved);
-	contInvolved--;
-	
-	// window.history.replaceState(null, null, `/event/create/${contActivity}`);
-	// form.action = `/event/createEvent/${contActivity}`;
+	auxInvolved--;
 
-	// minusButton('involved');
+	var qtdInvolved = document.getElementById(`qtdInvolved-${activity}`);
+	qtdInvolved.value = auxInvolved;
+
+	var removeInvolvedButton = document.getElementById(`removePerson-${activity}`)
+
+	removeInvolvedButton.innerHTML = `
+		<button  type="button" onclick="removeInvolved(${activity}, ${auxInvolved})" class="btn btn-sm btn-green btn-number" data-type="minus" >
+			<span class="fas fa-minus"></span>
+		</button>
+	`
+
+	minusButton('involved', activity, auxInvolved);
 }
 
-function minusButton(type){
+function minusButton(type, activity, involved){
 	if(type == 'activity'){
 		if(contActivity <= 1){
 			removeButton.classList.add('disabled');
@@ -583,14 +597,23 @@ function minusButton(type){
 			removeButton.classList.remove('disabled');
 		}
 	}
-	else if(type == 'involved'){
-		if(contInvolved <= 1){
-			removeInvolvedButton.classList.add('disabled');
-		}
-		else{
-			removeInvolvedButton.classList.remove('disabled');
-		}
-	}
+	// else if(type == 'involved'){
+	// 	if(involved <= 1){
+	// 		var removeInvolvedButton = document.getElementById(`removePerson-${activity}`)
+	// 		removeInvolvedButton.innerHTML = `
+	// 		<button  type="button" onclick="removeInvolved(${activity}, ${involved})" class="btn btn-sm btn-green btn-number disabled" data-type="minus" >
+	// 			<span class="fas fa-minus"></span>
+	// 		</button>`
+	// 	}
+	// 	else{
+	// 		var removeInvolvedButton = document.getElementById(`removePerson-${activity}`)
+	// 		removeInvolvedButton.innerHTML = `
+	// 		<button  type="button" onclick="removeInvolved(${activity}, ${involved})" class="btn btn-sm btn-green btn-number" data-type="minus" >
+	// 			<span class="fas fa-minus"></span>
+	// 		</button>`
+	// 	}
+	// }
 }
-// minusButton('activity');
-// minusButton('involved');
+
+minusButton('activity');
+minusButton('involved', 1, 1);

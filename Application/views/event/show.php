@@ -113,43 +113,80 @@
       <div id="activities_detail">
         <?php if(isset($data['involved'])){ ?>
         <?php foreach($data['involved'] as $involved) : ?>
-        <?php if(trim($data['involved'][0]['nome_contato']) != "" && trim($data['involved'][1]['nome_contato']) != ""){ ?>
         <div class="mt-5">
           <h4>Organizadores</h4>
           <div class="card mt-3">
             <div class="card-body">
-              <div class="col-sm">
-                <img src="/assets/img/circle red.png" alt="">
-                <div>
-                  <div class="row">
-                    <h5 id="externalName"><?= $data['involved'][1]['nome_contato'] ?></h5>
+              <?php if(isset($data['involved'][1]['nome_contato']) && trim($data['involved'][1]['nome_contato']) != "") { ?>
+                <?php if(isset($data['involved'][1]['area_contato_empresa']) && trim($data['involved'][1]['area_contato_empresa']) != "") { ?>
+                  <div class="col-sm">
+                    <img src="/assets/img/circle red.png" alt="">
+                    <div>
+                      <div class="row">
+                        <h5 id="externalName"><?= $data['involved'][1]['nome_contato'] ?></h5>
+                      </div>
+                      <div class="row">
+                        <p id="externalOffice"><?= trim($data['involved'][1]['area_contato_empresa']) == "" ? "" : $data['involved'][1]['area_contato_empresa'] ?></p>
+                      </div>
+                      <div class="row">
+                        <p id="externalAssociation"><?= trim($data['involved'][1]['nome_empresa']) == "" ? "" : $data['involved'][1]['nome_empresa'] ?></p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="row">
-                    <p id="externalOffice"><?= trim($data['involved'][1]['area_contato_empresa']) == "" ? "" : $data['involved'][1]['area_contato_empresa'] ?></p>
+                <?php } else { ?>
+                  <div class="col-sm">
+                    <img src="/assets/img/circle green.png" alt="">
+                    <div>
+                      <div class="row">
+                        <h5 id="internalName"><?= $data['involved'][1]['nome_contato'] ?></h5>
+                      </div>
+                      <div class="row">
+                        <p id="internalOffice"><?= trim($data['involved'][1]['papel_envolvido_ifsp']) == "" ? "" : $data['involved'][1]['papel_envolvido_ifsp'] ?></p>
+                      </div>
+                      <div class="row">
+                        <p id="internalAssociation"><?= trim($data['involved'][1]['nome_departamento']) == "" ? "" : $data['involved'][1]['nome_departamento'] ?></p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="row">
-                    <p id="externalAssociation"><?= trim($data['involved'][1]['nome_empresa']) == "" ? "" : $data['involved'][1]['nome_empresa'] ?></p>
+                <?php } ?>
+              <?php } ?>
+              <?php if(isset($data['involved'][0]['nome_contato']) && trim($data['involved'][0]['nome_contato']) != "") { ?>
+                <?php if(isset($data['involved'][0]['area_contato_empresa']) && trim($data['involved'][0]['area_contato_empresa']) != "") { ?>
+                  <div class="col-sm">
+                    <img src="/assets/img/circle red.png" alt="">
+                    <div>
+                      <div class="row">
+                        <h5 id="externalName"><?= $data['involved'][0]['nome_contato'] ?></h5>
+                      </div>
+                      <div class="row">
+                        <p id="externalOffice"><?= trim($data['involved'][0]['area_contato_empresa']) == "" ? "" : $data['involved'][0]['area_contato_empresa'] ?></p>
+                      </div>
+                      <div class="row">
+                        <p id="externalAssociation"><?= trim($data['involved'][0]['nome_empresa']) == "" ? "" : $data['involved'][0]['nome_empresa'] ?></p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="col-sm">
-                <img src="/assets/img/circle green.png" alt="">
-                <div>
-                  <div class="row">
-                    <h5 id="internalName"><?= $data['involved'][0]['nome_contato'] ?></h5>
+                <?php } else { ?>
+                  <div class="col-sm">
+                    <img src="/assets/img/circle green.png" alt="">
+                    <div>
+                      <div class="row">
+                        <h5 id="internalName"><?= $data['involved'][0]['nome_contato'] ?></h5>
+                      </div>
+                      <div class="row">
+                        <p id="internalOffice"><?= trim($data['involved'][0]['papel_envolvido_ifsp']) == "" ? "" : $data['involved'][0]['papel_envolvido_ifsp'] ?></p>
+                      </div>
+                      <div class="row">
+                        <p id="internalAssociation"><?= trim($data['involved'][0]['nome_departamento']) == "" ? "" : $data['involved'][0]['nome_departamento'] ?></p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="row">
-                    <p id="internalOffice"><?= trim($data['involved'][0]['papel_envolvido_ifsp']) == "" ? "" : $data['involved'][0]['papel_envolvido_ifsp'] ?></p>
-                  </div>
-                  <div class="row">
-                    <p id="internalAssociation"><?= trim($data['involved'][0]['nome_departamento']) == "" ? "" : $data['involved'][0]['nome_departamento'] ?></p>
-                  </div>
-                </div>
-              </div>
+                <?php } ?>
+              <?php } ?>
             </div>
           </div>
         </div>
-        <?php }
+        <?php 
           break;
           endforeach;
         } ?>
