@@ -251,7 +251,7 @@
                                 <?php 
                                     if($involved['fk_atividade_cod_atividade'] == $activity['cod_atividade']){
                                 ?>
-                            <div id="people-1">
+                            <div id="people-<?= $activity['cod_atividade'] ?>">
                                 <div id="involved-1-<?= $involved['cod_pessoa'] ?>" class="envolvidos atividade-<?= $activity['cod_atividade'] ?>">
                                     <div class="row g-2">
                                         <div class="col-md-6 px-3">
@@ -298,7 +298,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-1 border-start d-flex justify-content-center align-items-center">
-                                            <span id="removePerson-1" class="input-group-btn px-2">                                                
+                                            <span class="input-group-btn px-2">                                                
                                                 <button type="button" class="btn btn-sm btn-green btn-number position-relative" data-bs-toggle="modal" data-bs-target="#confirmInvolved<?= $involved['cod_pessoa'] ?>">
                                                     <span class="fas fa-minus"></span>
                                                 </button>
@@ -384,7 +384,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <input type="hidden" id="qtdInvolved-1" name="qtdInvolved-<?= $activity['cod_atividade'] ?>" value="1">
+                                    <input type="hidden" id="qtdInvolved-<?= $activity['cod_atividade'] ?>" name="qtdInvolved-<?= $activity['cod_atividade'] ?>" value="1">
                                 </div>
                                 <?php
                                     if(count($data['involved']) > 1){ 
@@ -399,8 +399,13 @@
                                     <label for="inputAddMorePearson" class="col-md col-form-label">Deseja adicionar uma pessoa envolvida?</label>
                                 </div>
                                 <div class="col px-3 input-group">
+                                    <span id="removePerson-<?= $activity['cod_atividade'] ?>" class="input-group-btn px-2">
+                                        <button  type="button" class="btn btn-sm btn-green btn-number" data-type="minus" >
+                                            <span class="fas fa-minus"></span>
+                                        </button>
+                                    </span>
                                     <span class="input-group-btn">
-                                        <button id="addPerson-1" onclick="addInvolved(1)" type="button" class="btn btn-sm btn-green btn-number" data-type="plus" >
+                                        <button id="addPerson-<?= $activity['cod_atividade'] ?>" onclick="addInvolved(<?= $activity['cod_atividade'] ?>)" type="button" class="btn btn-sm btn-green btn-number" data-type="plus" >
                                             <span class="fas fa-plus"></span>
                                         </button>
                                     </span>
@@ -450,6 +455,11 @@
                         <label for="inputAddMoreActivity" class="col-md col-form-label">Deseja adicionar uma atividade?</label>
                     </div>
                     <div class="col px-3 input-group">
+                        <span class="input-group-btn px-2">
+                            <button id="removeActivity" type="button" class="btn btn-sm btn-green btn-number" data-type="minus">
+                                <span class="fas fa-minus"></span>
+                            </button>
+                        </span>
                         <span class="input-group-btn">
                             <button id="addActivity" type="button" class="btn btn-sm btn-green btn-number addActivity" data-type="plus">
                                 <span class="fas fa-plus"></span>
@@ -512,4 +522,4 @@
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-<script type="text/javascript" language="javascript" src="/assets/js/event/create.js"></script>
+<script type="text/javascript" language="javascript" src="/assets/js/event/edit.js"></script>

@@ -219,7 +219,7 @@ class Event extends Controller
     }
   }
 
-  public function alterEvent($id = null)
+  public function alterEvent($id = null, $contActivities = 1)
   {
     $Events = $this->model('Events');
     $Activities = $this->model('Activities');

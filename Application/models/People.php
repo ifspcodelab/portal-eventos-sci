@@ -218,7 +218,6 @@ class People
 
     foreach($getCompany as $company):
       $codCompany = $company['fk_empresa_cod_empresa'];
-      // echo $codCompany;
 
       $updateExternalPerson = $conn->executeQuery('UPDATE pessoa_externa SET area_contato_empresa = :area_contato WHERE fk_pessoa_cod_pessoa = :id', array(
         ':id'           => $personId,
