@@ -89,7 +89,7 @@ class People
     return $personId->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public static function responsibleActivity(array $involvedId, array $activityId)
+  public static function responsibleActivity(array $involvedId, $activityId, $codAtividade)
   {
     $conn = new Database();
 
@@ -101,14 +101,22 @@ class People
     break;
     endforeach;
 
-    foreach($activityId as $activity):
-      $fk_atividade_cod_atividade = $activity;
-    break;
-    endforeach;
+    if($activityId != null && $codAtividade == null){
+      foreach($activityId as $activity):
+        $fk_atividade_cod_atividade = $activity;
+        $fk_atividade_cod_atividade = $fk_atividade_cod_atividade['cod_atividade'];
+      break;
+      endforeach;
+    }
+    else if($activityId == null && $codAtividade != null){
+      $fk_atividade_cod_atividade = $codAtividade;
+    }
+
+    echo $fk_atividade_cod_atividade;
 
     $responsibleActivity = $conn->executeQuery('INSERT INTO responsavel_atividade (fk_pessoa_cod_pessoa, fk_atividade_cod_atividade) VALUES (:fk_cod_pessoa, :fk_cod_atividade)', array(
       ':fk_cod_pessoa'    => $fk_pessoa_cod_pessoa['cod_pessoa'],
-      ':fk_cod_atividade' => $fk_atividade_cod_atividade['cod_atividade']
+      ':fk_cod_atividade' => $fk_atividade_cod_atividade
     ));
 
     return $responsibleActivity->fetchAll(PDO::FETCH_ASSOC);
@@ -166,7 +174,7 @@ class People
     return $insertInternalPerson->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public static function involvedInternal(array $involvedId, array $activityId, $papel_envolvido)
+  public static function involvedInternal(array $involvedId, $activityId, $papel_envolvido, $codAtividade)
   {
     $conn = new Database();
 
@@ -178,14 +186,25 @@ class People
     break;
     endforeach;
 
-    foreach($activityId as $activity):
-      $fk_atividade_cod_atividade = $activity;
-    break;
-    endforeach;
+    // foreach($activityId as $activity):
+    //   $fk_atividade_cod_atividade = $activity;
+    // break;
+    // endforeach;
+
+    if($activityId != null && $codAtividade == null){
+      foreach($activityId as $activity):
+        $fk_atividade_cod_atividade = $activity;
+        $fk_atividade_cod_atividade = $fk_atividade_cod_atividade['cod_atividade'];
+      break;
+      endforeach;
+    }
+    else if($activityId == null && $codAtividade != null){
+      $fk_atividade_cod_atividade = $codAtividade;
+    }
 
     $responsibleActivity = $conn->executeQuery('INSERT INTO envolvido_ifsp (fk_pessoa_IFSP_cod_pessoa_ifsp, fk_atividade_cod_atividade, papel_envolvido_ifsp) VALUES (:fk_cod_pessoa, :fk_cod_atividade, :papel_envolvido)', array(
       ':fk_cod_pessoa'    => $fk_pessoa_cod_pessoa_ifsp['cod_pessoa_ifsp'],
-      ':fk_cod_atividade' => $fk_atividade_cod_atividade['cod_atividade'],
+      ':fk_cod_atividade' => $fk_atividade_cod_atividade,
       ':papel_envolvido'  => $papel_envolvido
     ));
 

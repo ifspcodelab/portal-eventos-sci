@@ -68,6 +68,10 @@ fieldset legend{
     padding: 0 1rem;
 }
 
+.opacity-0{
+    opacity: 0;
+}
+
 @media(max-width: 576px){
 /* form new event */
 .formNew{

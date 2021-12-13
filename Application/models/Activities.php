@@ -52,13 +52,22 @@ class Activities
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public static function createActivity(array $dataActivities)
+  public static function createActivity(array $dataActivities, $codEvento)
   {
     $conn = new Database();
     
-    $eventId = $conn->executeQuery('SELECT cod_evento FROM `evento` ORDER BY cod_evento DESC LIMIT 1');
+    if($codEvento == null){
+      $eventId = $conn->executeQuery('SELECT cod_evento FROM `evento` ORDER BY cod_evento DESC LIMIT 1');
+      foreach($eventId as $event):
+        $event = $event['cod_evento'];
+      break;
+      endforeach;
+    }
+    else if($codEvento != null){
+      $event = $codEvento;
+    }
 
-    foreach($eventId as $event):
+    // foreach($eventId as $event):
       // foreach($dataActivities as $activity){
         $insertActivities = $conn->executeQuery('INSERT INTO atividade (nome_atividade, data_inicio, data_fim, hora_inicio, hora_fim, descricao_atividade, observacao_atividade, preco_inscricao, pontuacao_atividade, link_atividade, link_inscricao_atividade, fk_evento_cod_evento) VALUES (:nome, :dataInicio, :dataFim, :horaInicio, :horaFim, :descricao, :obsevacao, :preco, :pontuacao, :linkAtividade, :linkInscricao, :evento)', array(
           ':nome'           => $dataActivities['nome_atividade'],
@@ -72,13 +81,13 @@ class Activities
           ':pontuacao'      => (float) $dataActivities['pontuacao_atividade'],
           ':linkAtividade'  => $dataActivities['link_atividade'],
           ':linkInscricao'  => $dataActivities['link_inscricao_atividade'],
-          ':evento'         => (int) $event['cod_evento']
+          ':evento'         => (int) $event
         ));
       // }
 
       return $insertActivities->fetchAll(PDO::FETCH_ASSOC);
-    break;
-    endforeach;
+    // break;
+    // endforeach;
   }
 
   public static function getLastActivity(){

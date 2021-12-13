@@ -318,7 +318,7 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-red" data-bs-dismiss="modal">Cancelar</button>
                                                             <button type="button" class="btn btn-green position-relative" data-type="minus" >
-                                                                <input type="submit" id="deleteInvolved" value="<?= $involved['cod_pessoa'] ?>" name="deleteInvolved-<?= $involved['cod_pessoa'] ?>" class="invisible position-absolute top-0 start-0 w-100 h-100">
+                                                                <input type="submit" id="deleteInvolved" value="<?= $involved['cod_pessoa'] ?>" name="deleteInvolved-<?= $involved['cod_pessoa'] ?>" class="opacity-0 position-absolute top-0 start-0 w-100 h-100">
                                                                 Excluir
                                                             </button>
                                                         </div>
@@ -383,17 +383,17 @@
                                         <?php } ?>
                                     </div>
                                 </div>
+                                <?php
+                                    if(count($data['involved']) > 1){ 
+                                        ?>
+                                    <hr class="mt-4 mb-4 bg-light">
+                                    <?php } ?>
+                                </div>
+                                <?php }} ?>
+                                <!-- Add More Button - Envolvido -->
                                 <div>
                                     <input type="hidden" id="qtdInvolved-<?= $activity['cod_atividade'] ?>" name="qtdInvolved-<?= $activity['cod_atividade'] ?>" value="1">
                                 </div>
-                                <?php
-                                    if(count($data['involved']) > 1){ 
-                                ?>
-                                    <hr class="mt-4 mb-4 bg-light">
-                                <?php } ?>
-                            </div>
-                            <?php }} ?>
-                            <!-- Add More Button - Envolvido -->
                             <div class="row g-2 mb-4 d-flex flex-column">
                                 <div class="col px-3">
                                     <label for="inputAddMorePearson" class="col-md col-form-label">Deseja adicionar uma pessoa envolvida?</label>
@@ -434,7 +434,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-red" data-bs-dismiss="modal">Cancelar</button>
                                         <button type="button" class="btn btn-green position-relative" data-type="minus" >
-                                            <input type="submit" id="deleteActivity" value="<?= $activity['cod_atividade'] ?>" name="deleteActivity-<?= $activity['cod_atividade'] ?>" class="invisible position-absolute top-0 start-0 w-100 h-100">
+                                            <input type="submit" id="deleteActivity" value="<?= $activity['cod_atividade'] ?>" name="deleteActivity-<?= $activity['cod_atividade'] ?>" class="opacity-0 position-absolute top-0 start-0 w-100 h-100">
                                             Excluir
                                         </button>
                                     </div>
