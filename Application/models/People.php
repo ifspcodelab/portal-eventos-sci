@@ -251,6 +251,22 @@ class People
           ':site_empresa' => $dataCompany['site_empresa']
         ));
       }
+      else{
+        $insertCompany = $conn->executeQuery('INSERT INTO empresa (nome_empresa, email, site_empresa) VALUES (:nome, :email, :site_empresa)', array(
+          ':nome'             => $dataCompany['nome_empresa'],
+          ':email'            => $dataCompany['email'],
+          ':site_empresa'     => $dataCompany['site_empresa']
+        ));
+
+        $companyId = $conn->executeQuery('SELECT cod_empresa FROM `empresa` ORDER BY cod_empresa DESC LIMIT 1');
+
+        foreach($companyId as $cod_company){
+          $updateExternalPerson = $conn->executeQuery('UPDATE pessoa_externa SET fk_empresa_cod_empresa = :fk_empresa WHERE fk_pessoa_cod_pessoa = :id', array(
+            ':id'           => $personId,
+            ':fk_empresa'   => $cod_company['cod_empresa']
+          ));
+        }
+      }
     break;
     endforeach;
 
@@ -332,8 +348,5 @@ class People
 
     return $deleteInvolved->fetchAll(PDO::FETCH_ASSOC);
   }
-
-
-  // exemplo: findByDate
 
 }

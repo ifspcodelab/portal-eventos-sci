@@ -10,7 +10,7 @@ class Event extends Controller
   */
   public function index($page = 1)
   {
-    $Events = $this->model('Events'); // é retornado o model Events()
+    $Events = $this->model('Events'); // é retornado a model Events()
     
     $qtdEvents = 0; 
     $eventsPerPage = 2;
@@ -95,8 +95,6 @@ class Event extends Controller
 
       $Events = $this->model('Events');
       $dataEvents = $Events::createEvent((array)$dataEvent);
-
-      // $arrayInvolved = array();
 
       $Activities = $this->model('Activities');
       $Involved   = $this->model('People');
@@ -243,9 +241,6 @@ class Event extends Controller
               }
             }
           }
-          else{
-            echo 'nao setado';
-          }
           
           $dataEvents = $Events::findById($id);
           $Events::deleteEvent($dataEvents);
@@ -372,7 +367,6 @@ class Event extends Controller
             $qtdInvolved = (int)$dataActivity['qtdInvolved'];
 
             if($qtdInvolved > 1){
-              echo 'mais envolvido';
               for ($j = count($dataInvolved) + 1; $j <= $qtdInvolved; $j++) { 
                 $dataPerson = array(
                   'nome_contato'  => $_POST['inputName-'.$cod_atividade.'-'.$j],
@@ -498,7 +492,7 @@ class Event extends Controller
             }
           }
   
-          // header('Location: /');
+          header('Location: /');
         }
       }
     }

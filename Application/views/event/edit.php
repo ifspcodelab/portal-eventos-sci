@@ -178,17 +178,30 @@
                                     $date->setDate($ano,$mes,$dia);
                                     $date->setTime($hora,$min, 0);
                                     $dataInicio = $date->format("d/m/Y H:i:s");
-                                    // echo $dataInicio;
                                 ?>
+                                <?php
+                                    date_default_timezone_set('America/Sao_Paulo');
+                                    $ano = date("Y", strtotime($activity['data_fim']));
+                                    $mes = date("m", strtotime($activity['data_fim']));
+                                    $dia = date("d", strtotime($activity['data_fim']));
+                                    $hora = date("H", strtotime($activity['hora_fim']));
+                                    $min = date("i", strtotime($activity['hora_fim']));
+                                    $date = new DateTime();
+                                    $date->setDate($ano,$mes,$dia);
+                                    $date->setTime($hora,$min, 0);
+                                    $dataFim = $date->format("d/m/Y H:i:s");
+                                ?>
+                                <?php //echo date('Y-m-d\TH:i', $dataInicio); ?>
+                                <?php //echo date(DATE_ATOM, strtotime($dataInicio)) ?>
                                 <div class="row g-2 mb-2 row-form" style="margin-top: 0">
                                     <label class="col-form-label" for="autoSizingSelectDate<?= $activity['cod_atividade'] ?>">Data e Hora</label>
                                     <div class="col form-mb">
-                                        <input type="text" placeholder="Início" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataInicio<?= $activity['cod_atividade'] ?>" id="autoSizingSelectDate<?= $activity['cod_atividade'] ?>" value="<?= $dataInicio ?><?= $activity['hora_inicio'] ?>" >
+                                        <input type="text" placeholder="Início" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataInicio<?= $activity['cod_atividade'] ?>" id="autoSizingSelectDate<?= $activity['cod_atividade'] ?>" value="<?= $dataInicio ?>" >
                                         <span class="error"></span>
                                     </div>
             
                                     <div class="col">
-                                        <input type="text" placeholder="Fim" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataFim<?= $activity['cod_atividade'] ?>" id="autoSizingSelectDate<?= $activity['cod_atividade'] ?>" value="Fim" >
+                                        <input type="text" placeholder="Fim" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataFim<?= $activity['cod_atividade'] ?>" id="autoSizingSelectDate<?= $activity['cod_atividade'] ?>" value="<?= $dataFim ?>" >
                                         <span class="error"></span>
                                     </div>
                                 </div>
@@ -251,8 +264,8 @@
                                 <?php 
                                     if($involved['fk_atividade_cod_atividade'] == $activity['cod_atividade']){
                                 ?>
-                            <div id="people-<?= $activity['cod_atividade'] ?>">
-                                <div id="involved-1-<?= $involved['cod_pessoa'] ?>" class="envolvidos atividade-<?= $activity['cod_atividade'] ?>">
+                            <div id="people-<?= $activity['cod_atividade'] ?>" class="row">
+                                <div id="involved-1-<?= $involved['cod_pessoa'] ?>" class="col-md-11 envolvidos atividade-<?= $activity['cod_atividade'] ?>">
                                     <div class="row g-2">
                                         <div class="col-md-6 px-3">
                                             <!-- Nome -->
@@ -275,7 +288,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-5 px-3">
+                                        <div class="col-md-6 px-3">
                                             <!-- Email do envolvido -->
                                             <div class="mb-2">
                                                 <label for="inputEmail-<?= $activity['cod_atividade'] ?>-<?= $involved['cod_pessoa'] ?>" class="col-md col-form-label">E-mail</label>
@@ -297,35 +310,7 @@
                                                 </div> 
                                             </div>
                                         </div>
-                                        <div class="col-md-1 border-start d-flex justify-content-center align-items-center">
-                                            <span class="input-group-btn px-2">                                                
-                                                <button type="button" class="btn btn-sm btn-green btn-number position-relative" data-bs-toggle="modal" data-bs-target="#confirmInvolved<?= $involved['cod_pessoa'] ?>">
-                                                    <span class="fas fa-minus"></span>
-                                                </button>
-                                            </span>
-
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="confirmInvolved<?= $involved['cod_pessoa'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir a pessoa envolvida?</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Essa ação não poderá ser desfeita.
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-red" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-green position-relative" data-type="minus" >
-                                                                <input type="submit" id="deleteInvolved" value="<?= $involved['cod_pessoa'] ?>" name="deleteInvolved-<?= $involved['cod_pessoa'] ?>" class="opacity-0 position-absolute top-0 start-0 w-100 h-100">
-                                                                Excluir
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                     <div class="row g-2 mb-4" id="typeContainer-1-<?= $involved['cod_pessoa'] ?>">
                                         <?php if($involved['nome_departamento']) {?>
@@ -383,6 +368,35 @@
                                         <?php } ?>
                                     </div>
                                 </div>
+                                <div class="col-md-1 p-2 border-start d-flex align-items-center">
+                                            <span class="input-group-btn px-2">                                                
+                                                <button type="button" class="btn btn-sm btn-green btn-number position-relative" data-bs-toggle="modal" data-bs-target="#confirmInvolved<?= $involved['cod_pessoa'] ?>">
+                                                    <span class="fas fa-minus"></span>
+                                                </button>
+                                            </span>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="confirmInvolved<?= $involved['cod_pessoa'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir a pessoa envolvida?</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Essa ação não poderá ser desfeita.
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-red" data-bs-dismiss="modal">Cancelar</button>
+                                                            <button type="button" class="btn btn-green position-relative" data-type="minus" >
+                                                                <input type="submit" id="deleteInvolved" value="<?= $involved['cod_pessoa'] ?>" name="deleteInvolved-<?= $involved['cod_pessoa'] ?>" class="opacity-0 position-absolute top-0 start-0 w-100 h-100">
+                                                                Excluir
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                 <?php
                                     if(count($data['involved']) > 1){ 
                                         ?>
@@ -400,7 +414,7 @@
                                 </div>
                                 <div class="col px-3 input-group">
                                     <span id="removePerson-<?= $activity['cod_atividade'] ?>" class="input-group-btn px-2">
-                                        <button  type="button" class="btn btn-sm btn-green btn-number" data-type="minus" >
+                                        <button  type="button" class="btn btn-sm btn-green btn-number disabled" data-type="minus" >
                                             <span class="fas fa-minus"></span>
                                         </button>
                                     </span>

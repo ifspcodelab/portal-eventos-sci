@@ -199,24 +199,24 @@ const addActivity = function () {
 		<div class="col-md-6 px-3">
 			<!-- Nome -->
 			<div class="mb-2">
-				<label for="inputActivity${contActivity}" class="col-md col-form-label">Nome da Atividade</label>
-				<input type="text" class="form-control pt-2 pb-2" name="inputActivity${contActivity}" id="inputActivity${contActivity}" placeholder="Informe o nome da atividade"  >
+				<label for="inputActivity${contActivity}" class="col-md col-form-label">Nome da Atividade <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+				<input type="text" class="form-control pt-2 pb-2" name="inputActivity${contActivity}" id="inputActivity${contActivity}" placeholder="Informe o nome da atividade" required >
 				<span class="error"></span>
 			</div>
 			<!-- Descrição -->
 			<div class="mb-4">
-				<label for="inputDescriptionActivity${contActivity}" class="col-md col-form-label">Descrição</label>
-				<textarea type="text" class="form-control pt-2 pb-5" name="descriptionActivity${contActivity}" id="inputDescriptionActivity${contActivity}" placeholder="Descreva a atividade"  ></textarea>
+				<label for="inputDescriptionActivity${contActivity}" class="col-md col-form-label">Descrição <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+				<textarea type="text" class="form-control pt-2 pb-5" name="descriptionActivity${contActivity}" id="inputDescriptionActivity${contActivity}" placeholder="Descreva a atividade" required ></textarea>
 				<span class="error"></span>
 			</div>
 
 			<div class="row g-2 mb-2">
 				<!-- Gratuidade -->
 				<div class="col col-sm-auto">
-					<label for="inputCheckbox${contActivity}" class="col-md col-form-label mb-3">Gratuito?</label>
+					<label for="inputCheckbox${contActivity}" class="col-md col-form-label mb-3">Gratuito? <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
 					<div class="row g-2 mx-2">
 						<div class="col form-check" id="inputCheckbox${contActivity}">
-							<input class="form-check-input" type="radio" name="precoAtividade${contActivity}" id="inputCheckboxYes${contActivity}" onclick="showAmount(0)">
+							<input class="form-check-input" type="radio" name="precoAtividade${contActivity}" id="inputCheckboxYes${contActivity}" onclick="showAmount(0)" required>
 							<label class="form-check-label" for="inputCheckboxYes${contActivity}">
 								Sim
 							</label>
@@ -233,8 +233,7 @@ const addActivity = function () {
 					<!-- Preço -->
 					<div class="mb-2" id="amount">
 						<label for="inputAmount${contActivity}" class="col-md col-form-label">Preço</label>
-						<input type="number" step="0.01" name="inputAmount${contActivity}" id="inputAmount${contActivity}" placeholder="Informe o custo de participação na atividade" class="form-control pt-2 pb-2"
-						>
+						<input type="number" step="0.01" name="inputAmount${contActivity}" id="inputAmount${contActivity}" placeholder="Informe o custo de participação na atividade" class="form-control pt-2 pb-2">
 						<span class="error"></span>
 					</div>
 				</div>
@@ -243,16 +242,14 @@ const addActivity = function () {
 		<div class="col-md-6 px-3">
 			<!-- Data e Hora -->
 			<div class="row g-2 mb-2 row-form" style="margin-top: 0">
-				<label class="col-form-label" for="autoSizingSelectDate${contActivity}">Data e Hora</label>
+				<label class="col-form-label" for="autoSizingSelectDate${contActivity}">Data e Hora <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
 				<div class="col form-mb">
-					<input type="text" placeholder="Início" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataInicio${contActivity}" id="autoSizingSelectDate${contActivity}" value="Início"
-					>
+					<input type="text" placeholder="Início" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataInicio${contActivity}" id="autoSizingSelectDate${contActivity}" value="Início" required >
 					<span class="error"></span>
 				</div>
 
 				<div class="col">
-					<input type="text" placeholder="Fim" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataFim${contActivity}" id="autoSizingSelectDate${contActivity}" value="Fim"
-					>
+					<input type="text" placeholder="Fim" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataFim${contActivity}" id="autoSizingSelectDate${contActivity}" value="Fim" required >
 					<span class="error"></span>
 				</div>
 			</div>
@@ -272,6 +269,13 @@ const addActivity = function () {
 						<option value="10"></option>
 						<option value="20"></option>
 						<option value="30"></option>
+						<option value="40"></option>
+						<option value="50"></option>
+						<option value="60"></option>
+						<option value="70"></option>
+						<option value="80"></option>
+						<option value="90"></option>
+						<option value="100"></option>
 					</datalist>
 				</div>
 
@@ -316,8 +320,8 @@ const addActivity = function () {
 					<div class="col-md-6 px-3">
 						<!-- Nome -->
 						<div class="mb-2">
-							<label for="inputName-${contActivity}-${auxInvolved}" class="col-md col-form-label">Nome</label>
-							<input type="text" class="form-control pt-2 pb-2" id="inputName-${contActivity}-${auxInvolved}" name="inputName-${contActivity}-${auxInvolved}" placeholder="Informe o nome da pessoa envolvida na atividade"  >
+							<label for="inputName-${contActivity}-${auxInvolved}" class="col-md col-form-label">Nome <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+							<input type="text" class="form-control pt-2 pb-2" id="inputName-${contActivity}-${auxInvolved}" name="inputName-${contActivity}-${auxInvolved}" placeholder="Informe o nome da pessoa envolvida na atividade" required >
 							<span class="error"></span>
 						</div>
 						<div class="row row-form">
@@ -337,16 +341,16 @@ const addActivity = function () {
 					<div class="col-md-6 px-3">
 						<!-- Email do envolvido -->
 						<div class="mb-2">
-							<label for="inputEmail-${contActivity}-${auxInvolved}" class="col-md col-form-label">E-mail</label>
-							<input type="email" class="form-control pt-2 pb-2" name="inputEmail-${contActivity}-${auxInvolved}" id="inputEmail-${contActivity}-${auxInvolved}" placeholder="Informe um e-mail para contato"  ></input>
+							<label for="inputEmail-${contActivity}-${auxInvolved}" class="col-md col-form-label">E-mail <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+							<input type="email" class="form-control pt-2 pb-2" name="inputEmail-${contActivity}-${auxInvolved}" id="inputEmail-${contActivity}-${auxInvolved}" placeholder="Informe um e-mail para contato" required >
 							<span class="error"></span>
 						</div>
 						<!-- Externo ou Interno -->
 						<div class="mb-2">
-							<label for="inputCheckbox" class="col-md col-form-label mb-2">Relação com o IFSP</label>
+							<label for="inputCheckbox" class="col-md col-form-label mb-2">Relação com o IFSP <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
 							<div class="row g-2 mx-2 pt-2 pb-2">
 								<div class="col form-check" id="inputCheckbox">
-									<input class="form-check-input" type="radio" onclick="involvedType(${contActivity}, ${auxInvolved})" name="flexRadioDefault-${contActivity}-${auxInvolved}" id="inputCheckboxIn-${contActivity}-${auxInvolved}" value="internal">
+									<input class="form-check-input" type="radio" onclick="involvedType(${contActivity}, ${auxInvolved})" name="flexRadioDefault-${contActivity}-${auxInvolved}" id="inputCheckboxIn-${contActivity}-${auxInvolved}" value="internal" required >
 									<label class="form-check-label" for="inputCheckboxIn-${contActivity}-${auxInvolved}">Interna</label>
 								</div>
 								<div class="col form-check" id="inputCheckbox">
@@ -370,7 +374,7 @@ const addActivity = function () {
 			</div>
 			<div class="col px-3 input-group">
 				<span id="removePerson-${contActivity}" class="input-group-btn px-2">
-					<button  type="button" class="btn btn-sm btn-green btn-number" data-type="minus" >
+					<button  type="button" class="btn btn-sm btn-green btn-number disabled" data-type="minus" >
 						<span class="fas fa-minus"></span>
 					</button>
 				</span>
@@ -383,7 +387,7 @@ const addActivity = function () {
 		</div>
 	</fieldset>`
 
-	minusButton('activity');
+	minusButton('activity', contActivity, null);
 }
 addButton.addEventListener('click', addActivity);
 
@@ -396,7 +400,7 @@ const removeActivity = function () {
 	window.history.replaceState(null, null, `/event/create/${contActivity}`);
 	form.action = `/event/createEvent/${contActivity}`;
 
-	minusButton('activity');
+	minusButton('activity', contActivity, null);
 }
 removeButton.addEventListener('click', removeActivity);
 
@@ -437,7 +441,7 @@ function involvedType(activity, position){
                 	<!-- Email da empresa -->
                     <div class="mb-2">
                     	<label for="inputEmailCompany-${contActivity}-${position}" class="col-md col-form-label">E-mail</label>
-                        <input type="email" class="form-control pt-2 pb-2" name="inputEmailCompany-${contActivity}-${position}" id="inputEmailCompany-${contActivity}-${position}" placeholder="Informe um e-mail para contato com a empresa"></input>
+                        <input type="email" class="form-control pt-2 pb-2" name="inputEmailCompany-${contActivity}-${position}" id="inputEmailCompany-${contActivity}-${position}" placeholder="Informe um e-mail para contato com a empresa">
                     </div>
                 </div>
                 <div class="col-md-6 px-3">
@@ -459,9 +463,9 @@ function involvedType(activity, position){
 				involved.innerHTML = `
 				<div class="col-md-6 px-3">
                     <div class="mb-2">
-                        <label for="AreaIfspDataList-${contActivity}-${position}" class="form-label col-form-label">Área</label>
-                        <input autocomplete="off" class="form-control pt-2 pb-2" list="datalistAreaIfsp-${contActivity}-${position}" name="AreaIfspDataList-${contActivity}-${position}" id="AreaIfspDataList-${contActivity}-${position}" placeholder="Informe a área de atuação no câmpus">
-                        <datalist id="datalistAreaIfsp-${contActivity}-${position}"  >
+                        <label for="AreaIfspDataList-${contActivity}-${position}" class="form-label col-form-label">Área <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+                        <input autocomplete="off" class="form-control pt-2 pb-2" list="datalistAreaIfsp-${contActivity}-${position}" name="AreaIfspDataList-${contActivity}-${position}" id="AreaIfspDataList-${contActivity}-${position}" placeholder="Informe a área de atuação no câmpus" required >
+                        <datalist id="datalistAreaIfsp-${contActivity}-${position}">
                             <option value="Subárea de Informática"></option>
                         	<option value="Subárea de Turismo"></option>
                         </datalist>
@@ -470,8 +474,8 @@ function involvedType(activity, position){
             	</div>
 			    <div class="col-md-6 px-3">
                     <div class="mb-2">
-                    	<label for="inputCategory-${contActivity}-${position}" class="col-md col-form-label">Categoria</label>
-                    	<input type="text" class="form-control pt-2 pb-2" name="inputCategory-${contActivity}-${position}" id="inputCategory-${contActivity}-${position}" placeholder="Informe a função do envolvido"></input>
+                    	<label for="inputCategory-${contActivity}-${position}" class="col-md col-form-label">Categoria <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+                    	<input type="text" class="form-control pt-2 pb-2" name="inputCategory-${contActivity}-${position}" id="inputCategory-${contActivity}-${position}" placeholder="Informe a função do envolvido" required >
                 	</div>
 				</div>`
 			}
@@ -502,8 +506,8 @@ function addInvolved(activity) {
 			<div class="col-md-6 px-3">
 				<!-- Nome -->
 				<div class="mb-2">
-					<label for="inputName-${activity}-${auxInvolved}" class="col-md col-form-label">Nome</label>
-					<input type="text" class="form-control pt-2 pb-2" id="inputName-${activity}-${auxInvolved}" name="inputName-${activity}-${auxInvolved}" placeholder="Informe o nome da pessoa envolvida na atividade"  >
+					<label for="inputName-${activity}-${auxInvolved}" class="col-md col-form-label">Nome <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+					<input type="text" class="form-control pt-2 pb-2" id="inputName-${activity}-${auxInvolved}" name="inputName-${activity}-${auxInvolved}" placeholder="Informe o nome da pessoa envolvida na atividade" required >
 					<span class="error"></span>
 				</div>
 				<div class="row row-form">
@@ -523,16 +527,16 @@ function addInvolved(activity) {
 			<div class="col-md-6 px-3">
 				<!-- Email do envolvido -->
 				<div class="mb-2">
-					<label for="inputEmail-${activity}-${auxInvolved}" class="col-md col-form-label">E-mail</label>
-					<input type="email" class="form-control pt-2 pb-2" name="inputEmail-${activity}-${auxInvolved}" id="inputEmail-${activity}-${auxInvolved}" placeholder="Informe um e-mail para contato"  ></input>
+					<label for="inputEmail-${activity}-${auxInvolved}" class="col-md col-form-label">E-mail <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+					<input type="email" class="form-control pt-2 pb-2" name="inputEmail-${activity}-${auxInvolved}" id="inputEmail-${activity}-${auxInvolved}" placeholder="Informe um e-mail para contato" required >
 					<span class="error"></span>
 				</div>
 				<!-- Externo ou Interno -->
 				<div class="mb-2">
-					<label for="inputCheckbox" class="col-md col-form-label mb-2">Relação com o IFSP</label>
+					<label for="inputCheckbox" class="col-md col-form-label mb-2">Relação com o IFSP <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
 					<div class="row g-2 mx-2 pt-2 pb-2">
 						<div class="col form-check" id="inputCheckbox">
-							<input class="form-check-input" type="radio" onclick="involvedType(${activity}, ${auxInvolved})" name="flexRadioDefault-${activity}-${auxInvolved}" id="inputCheckboxIn-${activity}-${auxInvolved}" value="internal">
+							<input class="form-check-input" type="radio" onclick="involvedType(${activity}, ${auxInvolved})" name="flexRadioDefault-${activity}-${auxInvolved}" id="inputCheckboxIn-${activity}-${auxInvolved}" value="internal" required >
 							<label class="form-check-label" for="inputCheckboxIn-${contActivity}-${auxInvolved}">Interna</label>
 						</div>
 						<div class="col form-check" id="inputCheckbox">
@@ -556,7 +560,7 @@ function addInvolved(activity) {
 	</button>
 	`
 
-	minusButton('involved', auxInvolved);
+	minusButton('involved', activity, auxInvolved);
 }
 
 
@@ -588,23 +592,23 @@ function minusButton(type, activity, involved){
 			removeButton.classList.remove('disabled');
 		}
 	}
-	// else if(type == 'involved'){
-	// 	if(involved <= 1){
-	// 		var removeInvolvedButton = document.getElementById(`removePerson-${activity}`)
-	// 		removeInvolvedButton.innerHTML = `
-	// 		<button  type="button" onclick="removeInvolved(${activity}, ${involved})" class="btn btn-sm btn-green btn-number disabled" data-type="minus" >
-	// 			<span class="fas fa-minus"></span>
-	// 		</button>`
-	// 	}
-	// 	else{
-	// 		var removeInvolvedButton = document.getElementById(`removePerson-${activity}`)
-	// 		removeInvolvedButton.innerHTML = `
-	// 		<button  type="button" onclick="removeInvolved(${activity}, ${involved})" class="btn btn-sm btn-green btn-number" data-type="minus" >
-	// 			<span class="fas fa-minus"></span>
-	// 		</button>`
-	// 	}
-	// }
+	else if(type == 'involved'){
+		if(involved <= 1){
+			var removeInvolvedButton = document.getElementById(`removePerson-${activity}`)
+			removeInvolvedButton.innerHTML = `
+			<button  type="button" onclick="removeInvolved(${activity}, ${involved})" class="btn btn-sm btn-green btn-number disabled" data-type="minus" >
+				<span class="fas fa-minus"></span>
+			</button>`
+		}
+		else{
+			var removeInvolvedButton = document.getElementById(`removePerson-${activity}`)
+			removeInvolvedButton.innerHTML = `
+			<button  type="button" onclick="removeInvolved(${activity}, ${involved})" class="btn btn-sm btn-green btn-number" data-type="minus" >
+				<span class="fas fa-minus"></span>
+			</button>`
+		}
+	}
 }
 
-minusButton('activity');
+minusButton('activity', contActivity, null);
 minusButton('involved', 1, 1);

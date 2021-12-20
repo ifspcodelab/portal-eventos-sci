@@ -5,7 +5,7 @@
     <div class="container my-5 card p-5 formNew">
         <h2 class="text-green"> <strong> Novo Evento </strong> </h2>
         <hr class="mt-0 mb-4 bg-light"> 
-        <form id="form" class="needs-validation " action="/event/createEvent" method="POST">
+        <form id="form" class=" " action="/event/createEvent" method="POST">
             <!-- Novo evento -->
             <div class="row g-2 mb-1">
                 <div class="col-md-6 px-3">
@@ -13,8 +13,8 @@
                         <div class="row g-2 mb-4 row-form">
                             <!-- Nome -->
                             <div class="col col-lg">
-                                <label for="inputEvent" class="col-md col-form-label">Nome do Evento</label>
-                                <input type="text" class="form-control pt-2 pb-2" name="inputEvent" id="inputEvent" placeholder="Informe o nome do evento"  >
+                                <label for="inputEvent" class="col-md col-form-label">Nome do Evento <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+                                <input type="text" class="form-control pt-2 pb-2" name="inputEvent" id="inputEvent" placeholder="Informe o nome do evento" required >
                                 <span class="error"></span>
                             </div>
                             <!-- Sigla -->
@@ -26,8 +26,8 @@
                     </div>
                     <div class="mb-2">
                         <!-- Descrição -->
-                        <label for="inputDescription" class="col-md col-form-label">Descrição</label>
-                        <textarea type="text" class="form-control pt-2 pb-5" name="inputDescription" id="inputDescription" placeholder="Descreva o evento resumidamente"  ></textarea>
+                        <label for="inputDescription" class="col-md col-form-label">Descrição <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+                        <textarea type="text" class="form-control pt-2 pb-5" name="inputDescription" id="inputDescription" placeholder="Descreva o evento resumidamente" required ></textarea>
                         <span class="error"></span>
                     </div>
                     <div class="mb-2">
@@ -39,11 +39,11 @@
                 <div class="col-md-6 px-3">
                     <!-- Período -->
                     <div class="row g-2 mb-4 row-form">
-                        <label class="col-form-label" for="autoSizingSelect">Período</label>
+                        <label class="col-form-label" for="autoSizingSelect">Período <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
 
                         <div class="col form-mb">
                             <!-- Mês -->
-                            <select class="form-select pt-2 pb-2" name="selectPeriodoMes" id="autoSizingSelect"  >
+                            <select class="form-select pt-2 pb-2" name="selectPeriodoMes" id="autoSizingSelect" required >
                                 <option selected>Mês</option>
                                 <option value="Janeiro">Janeiro</option>
                                 <option value="Fevereiro">Fevereiro</option>
@@ -63,14 +63,14 @@
 
                         <div class="col">
                             <!-- Ano -->
-                            <input class="form-control pt-2 pb-2" list="datalistOptions" name="inputPeriodoAno" id="numberDataList" placeholder="Ano" type="number" placeholder="YYYY" min="2021" max="2100"  >
+                            <input class="form-control pt-2 pb-2" list="datalistOptions" name="inputPeriodoAno" id="numberDataList" placeholder="Ano" type="number" placeholder="YYYY" min="2021" max="2100" required >
                             <span class="error"></span>
                         </div>
                     </div>
 
                     <!-- Banner -->
                     <div class="mb-3">
-                        <label class="col-md col-form-label" for="inputGroupFile01">Banner</label>
+                        <label class="col-md col-form-label" for="inputGroupFile01">Banner <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
                         <div class="input-group mb-3 dropzone dz-clickable form-control d-flex justify-content-center" id="inputGroupFile01" onchange="readFile(event)">
                             <div class="dz-default dz-message d-flex flex-column justify-content-center align-items-center" data-dz-message="">
                                 <label for="inputBanner" id="labelFile">Selecione o arquivo</label>                                
@@ -82,7 +82,7 @@
                             <input id="fileDragName" name="fileDragName">
                             <input id="fileDragSize" name="fileDragSize">
                             <input id="fileDragType" name="fileDragType">
-                            <input id="fileDragData" name="fileDragData">
+                            <input id="fileDragData" name="fileDragData" required>
                         </div>
                     </div>
                     <div class="mb-2">
@@ -102,24 +102,24 @@
                             <div class="col-md-6 px-3">
                                 <!-- Nome -->
                                 <div class="mb-2">
-                                    <label for="inputActivity1" class="col-md col-form-label">Nome da Atividade</label>
-                                    <input type="text" class="form-control pt-2 pb-2" name="inputActivity1" id="inputActivity1" placeholder="Informe o nome da atividade"  >
+                                    <label for="inputActivity1" class="col-md col-form-label">Nome da Atividade <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+                                    <input type="text" class="form-control pt-2 pb-2" name="inputActivity1" id="inputActivity1" placeholder="Informe o nome da atividade" required >
                                     <span class="error"></span>
                                 </div>
                                 <!-- Descrição -->
                                 <div class="mb-4">
-                                    <label for="inputDescriptionActivity1" class="col-md col-form-label">Descrição</label>
-                                    <textarea type="text" class="form-control pt-2 pb-5" name="descriptionActivity1" id="inputDescriptionActivity1" placeholder="Descreva a atividade"  ></textarea>
+                                    <label for="inputDescriptionActivity1" class="col-md col-form-label">Descrição <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+                                    <textarea type="text" class="form-control pt-2 pb-5" name="descriptionActivity1" id="inputDescriptionActivity1" placeholder="Descreva a atividade" required ></textarea>
                                     <span class="error"></span>
                                 </div>
             
                                 <div class="row g-2 mb-2">
                                     <!-- Gratuidade -->
                                     <div class="col col-sm-auto">
-                                        <label for="inputCheckbox1" class="col-md col-form-label mb-3">Gratuito?</label>
+                                        <label for="inputCheckbox1" class="col-md col-form-label mb-3">Gratuito? <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
                                         <div class="row g-2 mx-2">
                                             <div class="col form-check" id="inputCheckbox1">
-                                                <input class="form-check-input" type="radio" name="precoAtividade1" id="inputCheckboxYes1" onclick="showAmount(0)">
+                                                <input class="form-check-input" type="radio" name="precoAtividade1" id="inputCheckboxYes1" onclick="showAmount(0)" required>
                                                 <label class="form-check-label" for="inputCheckboxYes1">
                                                     Sim
                                                 </label>
@@ -147,16 +147,14 @@
                             <div class="col-md-6 px-3">
                                 <!-- Data e Hora -->
                                 <div class="row g-2 mb-2 row-form" style="margin-top: 0">
-                                    <label class="col-form-label" for="autoSizingSelectDate1">Data e Hora</label>
+                                    <label class="col-form-label" for="autoSizingSelectDate1">Data e Hora <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
                                     <div class="col form-mb">
-                                        <input type="text" placeholder="Início" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataInicio1" id="autoSizingSelectDate1" value="Início"
-                                         >
+                                        <input type="text" placeholder="Início" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataInicio1" id="autoSizingSelectDate1" value="Início" required >
                                         <span class="error"></span>
                                     </div>
             
                                     <div class="col">
-                                        <input type="text" placeholder="Fim" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataFim1" id="autoSizingSelectDate1" value="Fim"
-                                         >
+                                        <input type="text" placeholder="Fim" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="form-control pt-2 pb-2" name="dataFim1" id="autoSizingSelectDate1" value="Fim" required >
                                         <span class="error"></span>
                                     </div>
                                 </div>
@@ -176,6 +174,13 @@
                                             <option value="10"></option>
                                             <option value="20"></option>
                                             <option value="30"></option>
+                                            <option value="40"></option>
+                                            <option value="50"></option>
+                                            <option value="60"></option>
+                                            <option value="70"></option>
+                                            <option value="80"></option>
+                                            <option value="90"></option>
+                                            <option value="100"></option>
                                         </datalist>
                                     </div>
             
@@ -221,8 +226,8 @@
                                         <div class="col-md-6 px-3">
                                             <!-- Nome -->
                                             <div class="mb-2">
-                                                <label for="inputName-1-1" class="col-md col-form-label">Nome</label>
-                                                <input type="text" class="form-control pt-2 pb-2" id="inputName-1-1" name="inputName-1-1" placeholder="Informe o nome da pessoa envolvida na atividade"  >
+                                                <label for="inputName-1-1" class="col-md col-form-label">Nome <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+                                                <input type="text" class="form-control pt-2 pb-2" id="inputName-1-1" name="inputName-1-1" placeholder="Informe o nome da pessoa envolvida na atividade" required >
                                                 <span class="error"></span>
                                             </div>
                                             <div class="row row-form">
@@ -243,16 +248,16 @@
                                         <div class="col-md-6 px-3">
                                             <!-- Email do envolvido -->
                                             <div class="mb-2">
-                                                <label for="inputEmail-1-1" class="col-md col-form-label">E-mail</label>
-                                                <input type="email" class="form-control pt-2 pb-2" name="inputEmail-1-1" id="inputEmail-1-1" placeholder="Informe um e-mail para contato"  ></input>
+                                                <label for="inputEmail-1-1" class="col-md col-form-label">E-mail <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
+                                                <input type="email" class="form-control pt-2 pb-2" name="inputEmail-1-1" id="inputEmail-1-1" placeholder="Informe um e-mail para contato" required >
                                                 <span class="error"></span>
                                             </div>
                                             <!-- Externo ou Interno -->
                                             <div class="mb-2">
-                                                <label for="inputCheckbox" class="col-md col-form-label mb-2">Relação com o IFSP</label>
+                                                <label for="inputCheckbox" class="col-md col-form-label mb-2">Relação com o IFSP <span type="button" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Esse campo é obrigatório">*</span></label>
                                                 <div class="row g-2 mx-2 pt-2 pb-2">
                                                     <div class="col form-check" id="inputCheckbox">
-                                                        <input class="form-check-input" type="radio" onclick="involvedType(1, 1)" name="flexRadioDefault-1-1" id="inputCheckboxIn-1-1" value="internal">
+                                                        <input class="form-check-input" type="radio" onclick="involvedType(1, 1)" name="flexRadioDefault-1-1" id="inputCheckboxIn-1-1" value="internal" required>
                                                         <label class="form-check-label" for="inputCheckboxIn-1-1">
                                                             Interna
                                                         </label>
@@ -280,7 +285,7 @@
                                 </div>
                                 <div class="col px-3 input-group">
                                 <span id="removePerson-1" class="input-group-btn px-2">
-                                    <button type="button" class="btn btn-sm btn-green btn-number" data-type="minus" >
+                                    <button type="button" class="btn btn-sm btn-green btn-number disabled" data-type="minus" >
                                         <span class="fas fa-minus"></span>
                                     </button>
                                 </span>
